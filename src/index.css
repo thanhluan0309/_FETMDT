@@ -1,0 +1,1758 @@
+/*
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  /* 3 */
+  tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-column {
+  flex-basis: 18%;
+  font-size: 'Roboto';
+  text-align: left;
+}
+
+.footer-column h2 {
+  font-size: 22px;
+  margin-bottom: 35px;
+}
+
+.cssforIconFooter{
+  /* background-color: beige; */
+  width: 100px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #B3B3B3;
+  font-family: 'Roboto';
+}
+
+@media screen and (max-width: 470px) {
+  .cssresponeIMG {
+    width: 100% !important;
+    margin: auto !important;
+  }
+
+  .responeIMG {
+    width: 350px !important;
+    height: 500px !important;
+  }
+
+  .IntroHeader-left-header{
+    text-align: center !important;
+  }
+
+  .carousel {
+    width: 100% !important;
+  }
+
+  .IntroBodyMap{
+    margin-left: 2% !important;
+  }
+
+  .responeMobieMap {
+    width: 97.5% !important;
+  }
+
+  hr {
+    width: 137px;
+  }
+
+  .flex-column {
+    margin-right: 3%;
+  }
+
+  .flex-column li{
+    margin-right: 1%;
+  }
+
+  .responeMobieMap-iframe {
+    width: 100% !important;
+  }
+
+  .footer-column {
+    flex-basis: 100%;
+    margin-bottom: 54px;
+  }
+
+  .IntroHeader-left-body {
+    padding-left: 0% !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  footer {
+    display: block !important;
+  }
+
+  .footer-column h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.navfont {
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+}
+
+code {
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+}
+
+.hover-effect {
+  /* Màu chữ mặc định */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Hiệu ứng chuyển đổi màu và rung trong 0.3 giây */
+}
+
+/* Hiệu ứng khi hover */
+
+.hover-effect:hover {
+  color: rgb(242, 146, 56) !important;
+  /* Màu chữ khi hover */
+  transform: scale(1.1);
+  /* Hiệu ứng rung */
+}
+
+.bodyRight-Img {
+  background-image: url('./img/cameracartoon3.png');
+  background-size: 73%;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-clip-path: circle(188px at 48% 52%);
+  clip-path: circle(188px at 48% 52%);
+}
+.backgroundIMG-dowload {
+  background-image: url('./imgchinhanh/D2.png');
+  background-size: 73%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.navbarTop-Logo {
+  background-image: url('./img/PHOTOTIMELOGO-45.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20em;
+  height: 6em;
+}
+
+.logoDroplist {
+  background-image: url('./img/PHOTOTIMELOGO-45.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 6em;
+}
+
+.bodyRightAbout-Img {
+  background-image: url('./img/contactbody.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-clip-path: circle(46%);
+  clip-path: circle(46%);
+}
+
+.bodyBottom-Img {
+  background-image: url('./img/vitrichinhanh.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Bodyleft-content-title {
+  text-align: inherit;
+  font-size: 1.6em;
+  color: #605757;
+  font-weight: 700;
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+}
+
+.Bodyleft-content-content {
+  text-align: justify;
+  font-size: 1.2rem;
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+  font-weight: 100;
+  width: 100%;
+}
+
+.backgroundRowBody {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.backgroundRowBodyOne {
+  background-image:url('../src/img/1.png') !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.backgroundRowBodyTwo {
+  background-image:url('../src/img/2.png')  !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.backgroundRowBodyThree {
+  background-image:url('../src/img/3.png') !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.backgroundRowBodyFour {
+  background-image:url('../src/img/4.png') !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.backgroundRowBodyFive {
+  background-image:url('../src/img/5.png') !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.backgroundRowBodyBottom {
+  position: absolute;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 1px, transparent 1px), linear-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.25) 1px, transparent 1px), linear-gradient(rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  background-color: #a4dfed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin: 0;
+}
+
+.Bodyleft-content {
+  margin: auto;
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .Bodyleft-content {
+    width: 50%;
+    /* Giả sử bạn muốn giữ lại chiều rộng 50% ở màn hình lớn hơn 768px */
+  }
+
+  .csseventL {
+    width: 170px !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .Bodyleft-content {
+    width: 40%;
+    /* Giả sử bạn muốn giữ lại chiều rộng 40% ở màn hình lớn hơn 992px */
+  }
+}
+
+.navbarStiky{
+  position: -webkit-sticky;
+  position: sticky;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+
+.cssbgImgcontact {
+  width: 100%;
+  height: 800px;
+  /* Đặt chiều cao tùy ý */
+  background-image: url('./img/contactheaderImg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.titleContact {
+  display: flex;
+  padding: 5%;
+  font-size: 1.5em;
+  font-family: 'Lexend', 'Montserrat', 'Gotham', sans-serif;
+  font-weight: 200;
+  color: #837e7e;
+}
+
+/* CSS cho các nút chuyển trang */
+
+.pagination {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
+}
+
+.pagination button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* CSS cho vùng hiển thị trang hiện tại */
+
+.pagination span {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.image-list img {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  /* Bo tròn viền cho hình ảnh */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Hiệu ứng chuyển động và đổ bóng */
+}
+
+.image-list img:hover {
+  transform: scale(1.1);
+  /* Phóng to khi di chuột qua */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  /* Hiệu ứng đổ bóng */
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.cssbgProduct {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 68%;
+  margin: auto;
+  padding: 20px;
+  overflow-y: scroll;
+  height: 1270px;
+  overflow-x: clip;
+}
+
+@media (max-width: 600px) {
+  .cssbgImgcontact {
+    height: 200px !important;
+  }
+}
+
+/* Media queries để làm cho CSS responsive */
+
+@media only screen and (min-width: 768px) {
+  /* .image-list {
+    justify-content: flex-start;
+  } */
+
+  .pagination {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cssResVideo {
+    margin-top: -30%;
+    margin-bottom: -30%;
+  }
+}
+
+@media only screen and (max-width: 855px) {
+  .cssforResListproduct{
+ 
+    height: 800px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .bodyRightAbout-Img {
+    margin-top: 14%;
+  }
+
+  .Bodyleft-content {
+    width: 82%;
+  }
+
+  .cssResponesiveImg {
+    background-image: none;
+  }
+
+  .cssbackgroundRowBodyRes {
+    height: 1060px !important;
+  }
+
+  .cssSectionProductRes {
+    margin-top: 70% !important;
+  }
+
+  .bodyRight-Img {
+    background-size: contain;
+    margin-bottom: 15% !important;
+    -webkit-clip-path: circle(157px at 47% 52%) !important;
+    clip-path: circle(157px at 47% 52%) !important;
+  }
+
+  .bodyBottom-Img {
+    height: 50%;
+    margin-top: 3%;
+  }
+
+  .Bodyleft-content-title {
+    text-align: inherit;
+    font-size: 1.8em;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-list img.animate {
+  animation: fadeIn 0.5s ease-out;
+  /* Sử dụng animation fadeIn */
+}
+
+.navbarTop {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbarBottom-ListItem{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 1%;
+}
+
+.navbarBottom {
+  display: flex;
+}
+
+.navbarBottom-Item {
+  transition: color 0.5s ease;
+  transition:  background-color 0.5s ease;
+}
+
+.navbarBottom-Item:hover {
+  background-color: rgb(246, 183, 193);
+  color: rgb(244, 85, 85);
+  /* Màu nền mới khi hover */
+}
+
+.cssItem {
+  width: 10em;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 900;
+  margin: auto;
+}
+
+/* external css: flickity.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.cssoffcanvasItem {
+  width: 23em;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  transition: background-color .5s ease-in;
+  font-weight: 600;
+  margin-bottom: 2px;
+  padding: 3%;
+  font-size: 0.8em;
+  border-radius: 5px;
+}
+
+.cssoffcanvasItem:hover {
+  background-color:rgb(247, 160, 160)
+}
+
+.cssforNavbar-Bottom-Center {
+  font-size: 1em;
+  font-weight: 300;
+  font-family: 'Roboto';
+}
+
+.dropdownList {
+  background-color: white;
+  border: none;
+}
+
+.cssResponesiveForContentL {
+  margin: auto;
+  justify-content: space-around;
+}
+
+.cssResforContentLeft {
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.pLeftcontent {
+  overflow-x: scroll;
+  height: 450px;
+  width: 99% !important;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+.card-body{
+  height: 276px;
+}
+
+@media only screen and (max-width: 470px) {
+  .IntroBody-left-li{
+    margin-bottom: 0% !important;
+  }
+
+  .IntroHeader-Right {
+    position: unset !important;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 52%;
+    top: 22%;
+    height: 200px !important;
+    width: 100% !important;
+    border-radius: 80px;
+  }
+
+  .cssResponesiveIntrobody1{
+    display: block !important;
+  }
+
+  .IntroBodyMap {
+    background-image: url("../src/img/bando.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .expand-box  {
+    height: 100px !important;
+    width: 50px !important;
+  }
+
+  .expand-box-Tamgiac {
+    width: 50px !important;
+    height: 100px !important;
+  }
+
+  .expand-box:hover {
+    width: 200px !important;
+    font-size: .5rem !important;
+  }
+
+  .IntroBody-left p {
+    margin-left: 7% !important;
+    font-size: .8rem !important;
+  }
+
+  .IntroBody-left img {
+    width: 130px !important;
+  }
+
+  .title-wrapper {
+    width: 56% !important;
+    margin-top: -15% !important;
+  }
+
+  .cssresponesivehethongNone{
+    margin: auto;
+    width: auto !important;
+    margin-left: -3% !important;
+  }
+
+  .cssresponesivehethong {
+    width: 100% !important;
+  }
+
+  .video-container {
+    width: 50% !important;
+    margin-left: 9% ;
+  }
+
+  .search-container {
+    width: 100% !important;
+  }
+
+  .search-input, .select-input {
+    width: 42%;
+  }
+
+  .select-input {
+    margin-right: 3%;
+  }
+
+  .cssResforContentLeft {
+    margin-left: 0%;
+  }
+
+  .cssbgProduct {
+    height: 930px;
+  }
+
+  .cssresponeanimate-text {
+    font-size: 8px;
+  }
+
+  /* .pLeftcontent {
+    overflow: scroll;
+    height: 385px;
+    width: 100% !important;
+    display: flex;
+  } */
+
+  .cssevent {
+    width: 116px !important;
+    font-size: .5em !important;
+  }
+
+  .logoDroplist {
+    width: 140px;
+  }
+
+  .cssResponesiveForContentL{
+    margin: 0 !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .cssbgProduct  {
+    width: 100%;
+  }
+
+  .cssforNavbar-Bottom-Left{
+    display: none;
+  }
+
+  .cssforNavbar-Bottom-Right{
+    display: none;
+  }
+
+  .cssItem {
+    width: 8em;
+  }
+
+  .cssforNavbar-Bottom-Center {
+    margin-top: 2%;
+  }
+
+  .dropdownList {
+    display: block !important;
+    width: 0% !important;
+  }
+
+  .navbarTop-Logo {
+    display: flex ;
+    width: 16em !important;
+  }
+
+  .navbarBottom-ListItem{
+    background-color: white;
+  }
+
+  .navbarBottom {
+    background-color: #fc8787;
+  }
+}
+
+.titlep {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+.animate-text {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.animate-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: fadeInRight 1s forwards;
+  font-family: sans-serif;
+  /* Thay đổi font chữ tại đây */
+  font-size: 2.3em;
+  /* Điều chỉnh kích thước font nếu cần */
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1.5;
+    transform: scale(1);
+  }
+}
+
+/* Điều chỉnh hiệu ứng cho từng chữ cái */
+
+.animate-text span:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.animate-text span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.animate-text span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.animate-text span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.animate-text span:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.animate-text span:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+.animate-text span:nth-child(7) {
+  animation-delay: 1.4s;
+}
+
+.animate-text span:nth-child(8) {
+  animation-delay: 1.6s;
+}
+
+.animate-text span:nth-child(9) {
+  animation-delay: 1.8s;
+}
+
+/* Thêm các rule tương tự cho các chữ cái còn lại */
+
+.cssevent {
+  color: #7d756a !important;
+  width: 100%;
+  font-weight: 600 !important;
+  padding-top: 0px !important;
+  padding-bottom: 10px !important;
+  padding-right: 0px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.csseventL {
+  width: 416px;
+  font-size: 0.8em;
+}
+
+.cssevent:hover {
+  text-decoration: underline;
+}
+
+.video-container {
+  width: 100%;
+  /* height: 65%; */
+  border: solid 1px;
+  border-radius: 10px;
+  display: block;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.cssContentMap {
+  font-size: .8em;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.cssContentTitleMap {
+  font-weight: 600
+  ;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 95%;
+  margin-left: 1%;
+}
+
+.search-input,
+.select-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  flex-grow: 2;
+}
+
+.select-input {
+  flex-shrink: 0;
+}
+
+.submit-button {
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.IntroHeader-left {
+  display: flex;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.IntroHeader-left-header {
+  font-family: 'Poppins';
+  font-weight: 600;
+  line-height: 72px;
+  font-size: 3.2rem;
+  text-align: left;
+}
+
+.cssforheaderIntro {
+  background-color: black;
+  padding: 8%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.IntroHeader-left-body {
+  display: flex;
+  color: #B3B3B3;
+  font-size: .9rem;
+  font-weight: 400;
+  font-family: 'Roboto';
+  width: 60%;
+  flex-wrap: wrap;
+  text-align: left;
+  margin-top: 4%;
+}
+
+.IntroHeader-Right {
+  /* position: absolute; */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAAC+ZpjcAAAACXBIWXMAAAsSAAALEgHS3X78AAAePUlEQVR4nO3dTXbUZqLHYeUe5mZQsxrguwLoFeCsAHYQelqT0CsIWUGnJzWNs4ILKwis4MIKGg9qVgO8Au4R93XaGBvXx1969fE85/jk0J2UVUJV+unVK+mHz58/NwAA5PyXdQkAkCWwAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAg7IEVCozZZrE+u7H4N//c+lh+/vrzcrv6eMu/B53bLNZPmqZ5eO333Pxz61PTNO+v/3m5Xb3vYfEI+eHz58/WJTBoZYfU/pyWgGr/+SiwzJdlJ3YVYG/bPy+3q0+2CI6xWaxPyzb75FpAPQ2t1HfXAux92WYdMAyMwNrBZrF+0TTNi8Ev6N3eXvt/3l99MMeyE9ks1r+VL6jeLLer20ZBku+pxjb1cixHwGXn9Lz8pHZK+/hQPjdvl9vV6wq//ysT+A7qWvVte7NYPyzb61n5SRwA7OPiapttmua1g4T6nCLczWmlL/mUW5d9s1hfHb1f7UjedvLbj/dk5Ov/NjW2qZunIAblWlS9rLBzuulx+fm5fE7ayDqv+BkZ+3dQ16ps29ei6sUA/n7az8xP5ef3zWL9poTWeeXlmi2BNW8n5Uuh/flls1i3K+NN2Zk4AqIXZQ5VG1XPBrrGT652XJvFuh0leGWnNW/lYOBViauTga6M9vP0rJwB+PLjO71friLkpvZD+Xs7H2WzWJ+XLxKIa8Nqs1i3I0J/DjiubnpURgc+ltN2zEg7YtV+LzZN8+8S3UONq+vaZfylfKe/KqNu9EBgcZero/Z/Cy2Sru2k/hzxaa+r0Hp/y1WMTNBmsX5ZLoT4aaTv7npoOTjogcBiF1eh5eiHo5QYGfNO6qZ2ntaf5TQME9QeXJaR1n+OZMTqPifl4OCt7/NuCSz20R79vC2XzMNe2kAvo1ZT2End9HMZzbLDmpDNYv28XAg0xQsMnpbRLN/nHRFY7Ks9Yv9fQ8zso5wS/GXiK+2xHdZ0lO+4/5noAcGVE9/n3RFYHOp3p0XYRTm9MpVTgvc5Mco7fiU4fp/RW/5dZOUJLI7xcxmZgFuV7WNu928SWSM2w7i6IrLCBBbH+slIFrcpcTWXkaubriLLnKwRmXFcXfndVbE5AouEnx35cF3ZHuYaV1dObjymigErI44OFpvmtdvyZAgsUn5zSoTGjuqmx+XqSYbvfOIT2nd1Up7mwZEEFikn5QsKfrOj+sovDj6GrUTw47mvh2scGAQILJJ8KGeu3O3aQ4m/5eBjoMrpsKnfQuQQL50qPI7AIs2HcqbKhG6BfbvH5ikOlvi93YlT/ccRWKSd2MnO1kunBr/Lo6YGplwxZ8T1bs9cVXg4gUUXfjKKNS8lHF7OfT3co31A9PNBL+H8OBi8n8/1gQQWXfHFNS8vjF7txOdiIMpBoNGr+z1zwHyYB2NcaEbheTuqsdyuPvnrmoUhHOV+KPed+lge0HulHV17Un7OKofgo/YBwsvtymXw9Q0hdi/LLRE+3nLPtHZbPS3/fFRp+a68NJK1P4E1XH+UD919TsvPlaEckZ2U0yEmkE5cuQVBzR3Am3Znudyu3n/n3/kSNOVU5vPKt5J44T5Dg1DzdO2Hss1+bzv4K7jaKC9BWOtWEi8E1v4E1nCdL7erg+4CXYZzz8oXyLOK7/ClwJqFWl+87dH/y+V2tfM2VkZUzzeL9euybdb4fDw7YHS3Pdh618Gy1Dgg6+J97DVSXoKlVmD/a7ld7fWZKSH2utwGp8YtJU6MvO5PYE3Qcrv6WHYe59cunf+5wjttL00/LcvDdNUaCTi7Z9TqTiVunpfQqhFZe43uloiMH6xsFuvP6de8z3K7GsJVabW22V+X29XBpybb/3azWH+s9LzE50Ze92OS+8S1O5JytPS3csTfN5f4Tlg5PVhjJOAfh8bVDe2pj4voku3G1YR11Vj/b46Jqysltt/Elmp3ttk9CayZKDujswqR5UM5bTX+fi+W21XkBohlJKvGKU4HHpWU+zrVOChIbmcvKnyXn7gn1n4E1oyUyOp7h+gDOW01/n6jV3+VeSV9j2LZWdVTY73/kZwqcTWXMPV6e7DN7kFgzUyZOP9Hj+/6xINuJ63vSdKX+0xq30ONR4LYWdVRY713sX3ZZgdOYM1T3x9MgTVBlUZguppkW2Pyrs9FHX2v94vQfMGvlBGxvkde3Zh1DwJrhsqH/UOP79xdgKepRiAcdOuS+1TaWQmsnpVb2PQ9/6qTbbaH176VMxK7E1jz1ecRu2HlaaoRzvGRgJ5e+zaPPPy5dzXioMvb1PQeWA6Ydyew5qvPD6YP5DT1vrPq4lTLNX0HVmMUq3eTGXUtatxj0Da7I4E1X33uTGo/R4tu9D6XpePXt7OavhoHe10+j9VBwYAJrJkql/n2dh8VT2OfpL7nsnQdQDUCyynCfvX+PdTlqGulh+nbZncksOatz6MfgTUhJrrGWI/98j10PNvsjgQWcAhHsRnWY7+mOF2h95vk9vz7RktgzVufw8uOHKelRhh0egqv3IS3bwKLY/V+atuUj90IrHlzipBDTe1y91oeT/A9DVKlG+PWeJB4H3yf70BgAUA3pnhQwI4EFgBAmMACqMjd3BkhVxLuQGABh/D4oxw7q36YN5TjoGAHAguAORBY9EpgAQCECSwAgDCBNW/mfgBABwTWvPU5UbHGQ0kBoAqBRV/6vGs8AFQlsObt6dxXAAB0QWDNVIWbG3pkBACzIbDmq9cJ7svtSmABMBsCa776vBP3VJ8oDwC3Eljz9bzHd270CoBZEVgztFms20dGPO7xnb+d+zoHYF4E1jy96vldu0UDALMisGamjF791PO7FlgAzIrAmpFya4bXPb/jC1cQAjA3AmsmSly97XnuVWP+FQBz9MDf+vRtFuv2lgznTdM8qvBm+x4xiyjrrEunY1wvAOxGYE1UGbFqb8XwouIjcS6X29UoA6tpmj8HsAwAjJTAGq4nm8V6l4V7eOOu7E/K6EjfpwJvM9a4AoCjCKzh+ucE3sP5AJYBAHpnkjtdaa8eNMEdgFkSWHSl75uZAsBgCCy60I5eOT0IwGwJLLrw0loFYM4EFmlvRnxrBgCIEFgkXRq9AgCBRdYLzx0EAIFFzr+cGgSA/yewSPhjuV05NQgAhcDiWG1cvbAWAeA/BBbHEFcAcAuBxaH+Lq4A4HYe9sy+PpSrBd9bcwBwO4HFrtp7XP223K48YxAA7iGw2MUf7cOb3eMKAHYjsLjLRdM052XU6pO1BAC7E1hc10bV26ZpXrtpKAAcTmDNWxtU70tUvTVx/Su/dvz6Z03TPO34dwBQicCarjaers+ZauPpU/nfPi63q7dzX0Hf0/Vk/s1i/UpgAUyXwBquH0UQAIyTG40CAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawgEN8tNYYmbf+wuiTwAIOIbBCltuVHT9j4/O/A4EFAOxDYO1AYAEAhAks4BCfrDVGpsaoyxMbyXwJLOAQ7yustU53VpvF+mGXr3+HdxV+5ywtt6sagXUy0XVd4/M/OgILGIuuA8hoA2PU+3a73K6MYO9AYAGHcASbYbJwvz5M8D31PUp22fPvGy2BBezNEWyMwOqX7fZ4Dq52JLCAQ/U9GnDa8evXOEUosPrVexxsFuvOtqvNYt31Z+I2ttkdCSzgUH2PBjzq+PVrTHK3s+pXjfXd5XYlsAZMYAGH6v0O5F2OBjRNc9bha9/KXdx7N7WrX2uMutpmdySwgEPZWR3nouffh202wQjWjgQWcKgaO6tORpnKyFjfV2OZLNyzcnFG32Hb5cho36Oul5XuJzZKAgs4SPmi7fuS7a52KM87et3vcaqljr7X+6MuJqOXg4Ku5yXeZJvdg8ACjlFjZ9VFDL3o4DXvY2dVR42Rw5cjec372Gb3ILCAY9T4wo3uWDaL9YsKIwHtqRanCOt4XeG3vkg+iqmMiP2Uer09CKw9CCzgGDV2Vk9To1hlp/db4rX2VGO98Z9T233Pw2rn970Kvl6NbfbCQcF+BBZwsLKzqvH4kfPQLRteV3ogr8Cqq8b6/7mMlh5ls1i3I7jPKiy/0as9CSzgWOcV1mAbRW8Pjax25GqzWLc72af5RbvXpZ1VdTW22dbvx0TWZrFuR8H+mV2knTko2JPAAo5V64u3jaz/bXc6+8xvKTu495VGAVqvPcuxrnKqq9Z9yNrI2uvgYLNYn7X/TdM0v3S7aHdqTw8KrD09GNXSAoPTnibcLNbvKo0GNWWn88tmsX5TRoau5om8L48SeVj++aTcjqHvCe031Ro94WvnFYPlaTk4+FAOUK5GNK/uMXW13V5ts48rLecV2+wBBBaQcF4xsK48qzgqtasLj8cZjN8qBtaVx+Wn9nLcR2AdwClC4GjL7erco192krySjCOU07R/WIf3+sPd2w8jsIAU8fB9FyVEGQ7b7P2sowMJLCDCKNa97KgGpozMGMW6m9GrIwgsIKnGI2fG4J3Rq8F6WeGZmmNw2dEjfmZDYAExZQL3G2v0G3ZUA1XmYhld/NYrtxM5jsAC0l4YEfjKrx4xMmzL7aq9ovDd3NfDNe/KOuEIAguIKke9kWcFTkC7ozI6Mg7PHRh8cenzmyGwgLhyqvAfM1+zF3ZU41EODM7mvh7adeDUYIbAAjpRTjHM9QqtL6MAdlTjUk7l/n3Gq+DvTmfnCCygM8vt6sUMI+uyjALYUY1QudpzjpH1d1e6ZgksoFMziyxxNQEzjCxx1QGBBXSuRNbU52S1D+49FVfTUILjbxOf+N6+t7+Jq24ILKAXZU7WjxO92/u/ltvVE3OupqXE8ulEb+HwzgFBtwQW0JtydeGTNkgmstbbWPxxuV25kehEtdG83K7OygjsFEaz2vfwj/Y9OSDolsACelV2WC/L6ZexjgxclhuInpZoZOLKCOzpyOcT/lFGrdxEtAcCC6iiPTVRRgZ+HFFotSNWv5adlBuIzkw5OGjnE/53iZUxjGhdlmX973bZjVr158Fc3igwTGUE6GyzWJ+WZ/a1N+d8NLCFbZ+veL7crl4PYFmobLldfWwfCbVZrB+WR0O1P48H9vfSXnRxXrZbUVWBwNrNxwpH2D4Q/zHFSZi2qRvKTqsNrJebxfpJ2WmdVdpxtUf9bUy18fd6wjsoz987Qtku2tNtv5UDhOfl52mlRXpzbZv9WGkZKH74/PmzdQEMVhkleFJi60mZB5OMrssS8X/9uLKKY20W66vt9WqbTUfXu3KgdrXNmgs4MAILGKVr4dWUHdjpju/jakf0SUjRtxJerevb733eX41AC6nxEFgAAGGuIgQACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACDsgRXKITaL9Wcr7k7vltvV2T7/wWaxftU0zS/9Lmbz43K7etvFC1fcPt4st6vnlX73VzaL9WnTNP+u8Kt/XW5Xr7p44c1i3W4vT7t47QHb+/MMjREsYGKeDOjtDGlZgJ4JLGBKHm0W64cDeT8CC2ZMYAFTM5SwcVoJZkxgAVMzlLAxggUzJrCAqakeNpvFul2Gk8mtWWBnAguYmiGMHBm9gpkTWMDUPBrA+xFYMHMCC5iczWJdex6WwIKZE1jAFNUOnJo34xzKbSpg1gQWMEXVAqtMcK/J6BkMgMACpqhmZAgcQGABWQMYwWk9rvi73WAUEFhA3CDmAFWc6G4ECxBYwGTVCp2ao2fAQAgsYKp6D6wB3B4CGAiBBUxVjREspweBLwQWMFU1TtUJLOALgQVMVoVTdgIL+EJgAVN22td72yzWD01wB648sCaACetzRMnoVQeW29UPk3tTzILA4lC/drDmzio8w+1d0zRvw6/5Mfx6HK7P6HEFIfAXgcVBltvVq/Sa2yzWryoE1tsu3guD0ef2ZAQL+Is5WMCk9fjonqEEltCDARBYwNR1HhxlgvujgazHkwEsA8yewAKmro8RHfOvgK8ILCCtt1sj7KiPwHJaDviKwALShhZYfUx0N4IFfEVgAZPXw0R3I1jAVwQWMAedBdBmsT41sRy4SWABc9DlaUujV8A3BBYwB13OkRJYwDcEFjAHXUaQCe7ANwQWMAcnZa5UF/p+vBMwAgILmIv4KFaPj+EBRkZgAXPRRQwJLOBWAguYiy7mSg0ysMqzEYGKBBYwF3MawTKyBpUJLGAuupjoboI7cCuBBcxJbGRns1i7PQNwJ4EFzEny1JnTcMCdBBaQNuSRneSyCSzgTgILmJPkHCyBBdxJYAFz8ih4C4PHthzgLgILmJujR55McAfuI7CAuUnEkdODwHcJLGAMLoLLmIgjI1jAdwksYAw+Nk3zIbScicBKjWAlwxEYEIEFjMX70HIeNdG9/LePQsvyNvQ6wMAILGAsUoHVHDkClZx/dR58LWBABBYwFsnAOmYOVXL+VfI9XWcSPlQmsIBRWG5XydNpQxjBulhuV59Cr3VT6l5fwIEEFjAmQ5jongqsrkavgAEQWMCYfAwt60GT1DeL9WlwgrvAggkTWMCYxKLkwLuxJ+c2uYIQJkxgAWnJByrfVHseVjKwUqNxwAAJLCAtdQrtNrVv1ZC6gvByuV0JLJiwB/5ygbFor7rbLNYXoYirOYJl/tWONov15x5+zY/hq1TBCBYwCtd3fqk4ebzPv1wmuJ+EfredOUycwALGptZE9+QNRq+fHvQ8QpgggQWMTa2J7skJ7tcj0VwsmCCBBYxNMkiqBNZyuzIHCyZOYAGjUq6+uwwt8z7R9DT0O9+FXgcYMIEFjFGvE903i3VXpwe74lmEUJnAAsYoNg9rx4nuY7vBaHJ5gQMILGCMkqNAu9x5fmwjWEBlAgsYo77v6B67RYMbWsI8CCxgdCpMdN/rpqTf8SH0OsDACSxgrFKjWN+9OnDPm5Hexz2vYCYEFjAGt4VJ8o7u3xvFMv8K2JvAAmLCoz3XdRpY90RUMrBum39lThZMkMACxmqMgWUEC2ZCYAGjFH7czK0RtVmsHwYnuF8ut6tPodcCBk5gAWOWeuzMXRPdjV4BBxFYwJh1PdE9OafMXCuYEYEFjFnXpwmNYAEHEVjAmCXvK3XbI3MEFnCQB1YbMFbtY2c2i3Vq6b86HVgmuD9KvXi5+3xfJvOw5+V29cMAFgP2ZgQLGLvU42duRkkyUlKT8Xd10vPvA24QWMDYpU69nWwW6+unCZMT3J0ehJkRWMDYdTXRva/A8nxCmCCBBQxeO9fqO8vYVWAlTxF+L6IEFkyQwAJG7Z742teXUatyqjA2jym8jMAICCxgCtIT3ZOjV6llA0ZEYAFJt91Lqg+p02xXE93d/wo4isACkmoFVnoelisIgaMILGAKknOcnnzn4c+HEFgwQwILmIJkxLwMrw+BBTMksIDRW25Xn5qmuQi9j+Rd0C/KsgEzI7CAqRjiSJHRK5gpgQVMhcC6pjysGqhEYAFTMcSbee4SWF1FWPJWE8CeBBYwdJc7Lt8QHzlzbzyZowXTJLCAodtphGe5XX3cI8b6cFmWCZghgQVMyZDmYZngDjMmsIApGdI8LA94hhkTWMCUDGnUyOlBmDGBBUyJU4TAIAgsYDKGNNF9uV0JLJgxgQUknQ1gbQ4hbN4NYBmAigQWMDVDCCzzr2DmBBYwNUMIrH2XYUj37wICBBYwNWMMLPO1YGIEFjApQ5hcvtyu3AMLZk5gAUN3SDDVnGT+oeLvvs7DnqEigQUM3SEPQ645ijWUCe4PB7AMMFsCC5iimoFlPhUgsIBJqjmKZP4VILCA6ak8ydwIFiCwgMmqMdn8crldHTJnDJgYgQVMVY2RJKNXwBcCC5iqGrFj/hXwhcACpmpMI1hGvmBiBBaQdDqUtVlpovuhoWTeFkyMwAKSHg1sbfY60X25XQ3lJqNAZQILGLpjRnf6DJ6aj+cBBkZgAUN3zPykPuc2mUcF/EVgAVPW5zysoQWWZxFCRQILmLI+o2do86+eDGAZYLYEFjBZ5a7qF328v8qP5wEG5oG/EGDi3vdwdWONx/LMwmaxPqv9PsUzhxBYwNS1gfWs4/dognt3/hzAMvwwgGVgZJwiBKauj9EHgQV8RWABU9fH5PNjA8spKJgYgQVMWrm7+mXH79EIFvAVgQXMQZcBdFGuVgT4i8AC5qDLU3BGr4BvCCxg6BIB02UECSzgGwILiOjqfkWh028CC+iVwAImr+OJ7gIL+IbAAuaiixC6LPEG8BWBBcxFF4E15NErD3uGigQWMBdzC6yTASwDzJbAAuZiyIHlNCNMjMACZmG5XQ02sMzjgukRWMCcvEu+146iDZgAgQXMSTKIorEGTIvAAuYkGVhO6wF3EljAkKVvDpqMIqcHgTsJLGDIohGz3K6SD30WWMCdHlg1DEhy57erGr/zNjWWI32Kq329Xzt4zbR/NE3z8NjXDMda08G668L5gD4zMGg/fP782d8QAECQU4QAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAwgQWAECYwAIACBNYAABhAgsAIExgAQCECSwAgDCBBQAQJrAAAMIEFgBAmMACAAgTWAAAYQILACBMYAEAhAksAIAwgQUAECawAADCBBYAQJjAAgAIE1gAAGECCwAgTGABAIQJLACAMIEFABAmsAAAkpqm+T9YMgYcKrT9qQAAAABJRU5ErkJggg==);
+  width: 480px;
+  left: 52%;
+  top: 23.5%;
+  background-color: aliceblue;
+  border-radius: 3%;
+  /* height: 50%; */
+}
+
+.cssbodyIntro {
+  margin-top: 10%;
+}
+
+.IntroBody {
+  flex-direction: column;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-top: 6%;
+}
+
+.IntroBody-left {
+  width: 50%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-left: 1%;
+}
+
+.IntroBody-left img {
+  width: 200px;
+  height: auto;
+  border-radius: 12%;
+  margin-bottom: 10px;
+  border: solid 1px;
+  transition: border-radius  0.5s ease, border  0.5s ease;
+}
+
+.IntroBody-left ul li {
+}
+
+.IntroBody-left-li {
+  margin-bottom: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.IntroBody-left p {
+  margin: 0;
+  font-size: 14px;
+  z-index: 1;
+  color: #555;
+  margin-left: -10%;
+  width: 50%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  flex-wrap: wrap;
+  display: flex;
+  background-color: white;
+  animation: fadeIn 4s ease-in-out;
+  /* Thời gian 1s và sử dụng hàm ease-in-out */
+}
+
+@keyframes fadeIn {
+  from {
+    color: white;
+  }
+
+  to {
+    color: #555;
+  }
+}
+
+.title {
+  padding: 20px;
+  /* Khoảng cách giữa đường viền và nội dung */
+  border-radius: 8px;
+  /* Bo tròn góc */
+  text-align: left;
+  /* Căn giữa theo chiều ngang */
+  margin-bottom: 7%;
+}
+
+.title h1{
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.title p {
+  font-size: .9rem;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .IntroBody {
+    flex-direction: column;
+  }
+
+  .IntroBody-left {
+    width: 100%;
+    margin-bottom: 20px;
+    /* Thêm khoảng cách giữa cột khi hiển thị dạng dọc */
+  }
+}
+
+.LeftListItem {
+  list-style-type: none;
+  /* Ẩn các dấu chấm đầu dòng */
+  padding: 0;
+  margin: 0;
+}
+
+.LeftListItem-Item {
+  /* Màu chữ */
+  padding: 10px;
+  /* Khoảng cách giữa đường viền và nội dung */
+  margin-bottom: 5px;
+  /* Khoảng cách giữa các mục */
+  border-radius: 4px;
+  /* Bo tròn góc */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Đổ bóng nhẹ */
+  cursor: pointer;
+  /* Hình con trỏ khi di chuột qua */
+  transition: background-color 0.3s ease;
+  /* Hiệu ứng chuyển động màu nền */
+}
+
+.LeftListItem-Item:hover {
+  background-color: #2980b9;
+  /* Màu nền khi di chuột qua */
+}
+
+.IntroBody-leftimg img{
+  border-radius: 0px;
+  /* Bo tròn góc */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Đổ bóng nhẹ */
+  width: 100%;
+  height: 130px;
+}
+
+.cssSetbackgroundIntro {
+  background-image: url("https://i.pinimg.com/originals/67/8f/ae/678fae452f99192e9f7c9fa642f0bedc.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border: solid  1px;
+}
+
+.title-wrapper {
+  background-color: white;
+  border-radius: 8px 8px 0 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: -3%;
+  padding: 15px;
+  position: absolute;
+  text-decoration: underline;
+  width: 15%;
+}
+
+.wrapper-content {
+  text-align: left;
+  padding: 3.5%;
+  color: gray;
+  font-size: .9em;
+}
+
+.expand-container {
+  position: relative;
+}
+
+.expand-box {
+  width: 100px;
+  height: 200px;
+  background-color: #3498db;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: width 1s ease;
+  /* Hiệu ứng transition cho width */
+  cursor: pointer;
+  margin-bottom: 1%;
+  /*clip-path: polygon(100% 46%, 52% 0, 52% 100%);*/
+}
+
+.expand-box-Tamgiac {
+  width: 100px;
+  height: 200px;
+  background-color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: width 0.5s ease;
+  /* Hiệu ứng transition cho width */
+  cursor: pointer;
+  -webkit-clip-path: polygon(56% 46%, 0 0, 0 100%);
+  clip-path: polygon(56% 46%, 0 0, 0 100%);
+}
+
+.expand-box:hover {
+  width: 850px;
+  /* Khi hover vào, width sẽ tăng lên */
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 4;
+}
+
+.expand-box p{
+  margin-left: 2%;
+}
+
+.backgroundMap {
+  background-image: url("../src/img/bando.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.IntroBody-left img:hover {
+  border: 1px #eb8d8d solid;
+  border-radius: 25%;
+}
+
+ /* Media query cho mobile */
+ @media (max-width: 767px) {
+  .responsive-media {
+      max-width: 100%;
+  }
+  .cssresponesiveDowload{
+    height: 500px !important;
+  }
+}
+
+/* Media query cho laptop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .responsive-media {
+      max-width: 75%;
+  }
+}
+
+/* Media query cho PC */
+@media (min-width: 1024px) {
+  .responsive-media {
+      max-width: 50%;
+  }
+}

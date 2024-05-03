@@ -1,0 +1,73 @@
+.csstext {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333333; /* Màu xám nhạt */
+    font-weight: bold;
+    text-align: center;
+}
+.bgtitle {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRql0MrXnJrZHXwMMFz9AFxb994M-2fm5oxSsmPuvp_tQ&s);
+    background-size: cover;
+    height: 620px;
+    background-repeat: no-repeat;
+    object-fit: fill;
+}
+.csscontent {
+    position: absolute;
+    left: 15px;
+    flex-wrap: wrap;
+    top: 196px;
+    width: 80%;
+    display: flex;
+    overflow: hidden;
+    font-size: .9rem;
+    color: white;
+    font-weight: 700;
+}
+.image-container {
+    position: relative; /* Cần thiết để xác định vị trí chính xác cho văn bản */
+    display: inline-block; /* Đảm bảo rằng container chỉ có kích thước bằng ảnh */
+  }
+  
+  .image-container img {
+    width: 100%;
+    border-radius: 15px;
+    height: 253px;
+  }
+  
+  .text-overlay {
+    position: absolute; /* Định vị văn bản tuyệt đối so với .image-container */
+    top: 50%; /* Đặt văn bản ở giữa theo chiều dọc */
+    left: 50%; /* Đặt văn bản ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Đảm bảo văn bản thực sự ở giữa */
+    color: white; /* Văn bản có màu trắng để nổi bật trên ảnh */
+    font-size: 24px; /* Kích thước phông chữ */
+    font-weight: bold; /* Phông chữ in đậm */
+    text-align: center; /* Canh giữa văn bản */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng để tăng khả năng đọc */
+  }
+
+  .footer-text {
+    position: absolute; /* Định vị văn bản tuyệt đối bên trong container */
+    bottom: 0; /* Đặt ở dưới cùng */
+    left: 0; /* Căn trái */
+    width: 100%; /* Văn bản chiếm toàn bộ chiều rộng */
+    padding: 10px; /* Thêm khoảng cách giữa văn bản và cạnh dưới */
+    color: white; /* Văn bản màu trắng để nổi bật */
+    background: rgba(0, 0, 0, 0.5); /* Nền mờ màu đen để cải thiện độ rõ ràng */
+    text-align: center; /* Căn giữa văn bản */
+ 
+    border-radius: 0px 0px 15px 15px;
+  }
+  .react-multi-carousel-item {
+
+    margin-right: 7px;
+}
+.slick-slide{
+    width: 170px !important;
+    margin-right: 11px;
+}
+.slick-dots {
+    display: none !important;
+}
+  
