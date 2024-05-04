@@ -14,10 +14,12 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
 import EmailIcon from "@mui/icons-material/Email";
+import { useNavigate } from "react-router-dom";
 const pages = ["Sản phẩm", "Người dùng", "Bài viết"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
+  let nav = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,7 +47,9 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => {
+              nav("/homepage");
+            }}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -88,11 +92,22 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key={1}>
+                <Typography
+                  onClick={() => {
+                    nav("/product");
+                  }}
+                  textAlign="center"
+                >
+                  Sản phẩm
+                </Typography>
+              </MenuItem>
+              <MenuItem key={2} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Người dùng</Typography>
+              </MenuItem>
+              <MenuItem key={3} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Bài viết</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -100,7 +115,9 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => {
+              nav("/product");
+            }}
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -115,15 +132,15 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              key={1}
+              onClick={() => {
+                nav("/product");
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Sản phẩm
+            </Button>
           </Box>
 
           <Box

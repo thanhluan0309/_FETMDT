@@ -9,6 +9,7 @@ import {
 import PageContact from "./component/Homepage/Contact/Contact";
 import PageAboutUs from "./component/Homepage/About/Aboutus";
 import PageProduct from "./component/Homepage/Product/product";
+import Product from "./component/_product/Product";
 import Homepage from "./component/Homepage/Homepage";
 import Intro from "./component/Introduce/Introduce";
 import Poisiton from "./component/poisition/poisition";
@@ -24,11 +25,12 @@ function App() {
       <Route path="/login" element={<Auth check="login"></Auth>}></Route>
       <Route path="/register" element={<Auth check="register"></Auth>}></Route>
       <Route path="/homepage" element={<Homepage2></Homepage2>}></Route>
+      <Route path="/product" element={<Product></Product>}></Route>
 
       <Route path="/aboutus" element={<PageAboutUs></PageAboutUs>}></Route>
       <Route path="/dowload" element={<Dowload></Dowload>}></Route>
       <Route path="/contact" element={<PageContact></PageContact>}></Route>
-      <Route path="/product" element={<PageProduct></PageProduct>}></Route>
+
       <Route path="/Poisition" element={<Poisiton></Poisiton>}></Route>
       <Route path="/Intro" element={<Intro></Intro>}></Route>
 
