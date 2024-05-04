@@ -40,6 +40,10 @@ const ListUserProduct = () => {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 400px;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
   `;
 
   const FormGroup = styled.div`
@@ -66,6 +70,10 @@ const ListUserProduct = () => {
       outline: none;
       border-color: #4d90fe;
     }
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 8px;
+    }
   `;
 
   const FileInput = styled(FormInput).attrs({ type: "file" })`
@@ -86,6 +94,10 @@ const ListUserProduct = () => {
 
     &:hover {
       background-color: #307fe2;
+    }
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 8px;
     }
   `;
   const handleSubmit = (e) => {
@@ -116,7 +128,7 @@ const ListUserProduct = () => {
         gridAutoRows="140px"
         flexWrap="wrap"
         display="flex"
-        justifyContent="space-between"
+        justifyContent="space-evenly"
         mt={15}
         gap="20px"
       >
@@ -343,7 +355,7 @@ const ListUserProduct = () => {
           </Box>
         </Box>
       </Box>
-      <Box gridColumn="span 7">
+      <Box mt={15} gridColumn="span 7">
         <Typography p="15px" variant="inherit" fontWeight="600">
           Hoạt động thành viên
         </Typography>
@@ -355,8 +367,8 @@ const ListUserProduct = () => {
             columns={{ xs: 4, sm: 9, md: 12 }}
           >
             {Array.from(Array(9)).map((_, index) => (
-              <Grid xs={2} sm={4} md={4} key={index}>
-                <Card sx={{ maxWidth: 345 }}>
+              <Grid display={"flex"} xs={2} sm={4} md={4} key={index}>
+                <Card style={{ margin: "auto" }} sx={{ maxWidth: 345 }}>
                   <CardMedia
                     component="img"
                     alt="green iguana"

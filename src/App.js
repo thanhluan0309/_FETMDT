@@ -14,11 +14,17 @@ import Intro from "./component/Introduce/Introduce";
 import Poisiton from "./component/poisition/poisition";
 import Media from "./component/media/media";
 import Homepage2 from "./component/Homepage2/Homepage2";
+
+import Auth from "./component/Auth/Auth";
 import Dowload from "./component/Homepage/DowloadApp/Dowload";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Homepage></Homepage>}></Route>
+      <Route path="/" element={<Auth></Auth>}></Route>
+      <Route path="/login" element={<Auth check="login"></Auth>}></Route>
+      <Route path="/register" element={<Auth check="register"></Auth>}></Route>
+      <Route path="/homepage" element={<Homepage2></Homepage2>}></Route>
+
       <Route path="/aboutus" element={<PageAboutUs></PageAboutUs>}></Route>
       <Route path="/dowload" element={<Dowload></Dowload>}></Route>
       <Route path="/contact" element={<PageContact></PageContact>}></Route>
@@ -27,7 +33,6 @@ function App() {
       <Route path="/Intro" element={<Intro></Intro>}></Route>
 
       <Route path="/sukien" element={<Media></Media>}></Route>
-      <Route path="/test" element={<Homepage2></Homepage2>}></Route>
     </Routes>
   );
 }

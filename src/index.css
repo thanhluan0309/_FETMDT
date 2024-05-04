@@ -809,6 +809,12 @@ code {
     /* Giả sử bạn muốn giữ lại chiều rộng 40% ở màn hình lớn hơn 992px */
   }
 }
+.csscontainer {
+  background-color: white;
+  padding: 0px !important;
+  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .navbarStiky{
   position: -webkit-sticky;

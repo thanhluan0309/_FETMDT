@@ -41,8 +41,8 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>PHOTO TIME</title>
-    <link rel="icon" type="image/x-icon" href="./image/logo.jpg">
+    <title>Sàn giao dịch</title>
+    <!-- <link rel="icon" type="image/x-icon" href="./image/logo.jpg"> -->
     <style>
       html,body {
           font-family: Arial, sans-serif;
@@ -51,6 +51,7 @@
           padding: 0 !important;
           box-sizing: border-box;
       }
+     
       *{
         box-sizing: border-box;
       }
@@ -77,7 +78,14 @@
           text-align: center;
           padding: 1em;
       }
-
+ 
+        /* html {
+            display: flex !important;
+          }
+          body{
+            margin: auto !important;
+          } */
+    
       @media (max-width: 600px) {
           section {
               padding: 1em;
@@ -94,59 +102,16 @@
             margin-bottom: 95% !important;
           }
       }
-      .social-icons {
-            position: fixed;
-            bottom: 12%;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            z-index: 200;
-        }
-
-        .social-icons a {
-          
-            display: block;
-            margin-bottom: 10px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            line-height: 40px;
-            text-decoration: none;
-            font-size: 18px;
-            font-size: 30px;
-    font-weight: 400;
-    line-height: 62px;
-    background-color: #fff;
-    border: 1px solid #f1f1f1;
-            transition: background-color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            background-color: #4267B2; /* Màu Facebook */
-        }
-
-        .social-icons .zalo:hover {
-            background-color: #00BEAF; /* Màu Zalo */
-        }
-
-        .social-icons .tiktok:hover {
-            background-color: #000; /* Màu TikTok */
-        }
+      
+        
   </style>
   </head>
 <div  style="overflow-x: clip; height: 100%;  font-family: 'Open Sans', sans-serif;">
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="social-icons">
-      <a  onclick="openFace()" style="background-color: #0866ff;color:white;cursor: pointer;"><i class="fa-brands fa-facebook"></i></a>
-      <a href="tel:0369357270" style="background-color: #337333" ><i class="fa-solid fa-phone-volume"></i></a>
-      <a id="scrollup" onclick="scrollUp()" style="color: white;background-color: black;cursor: pointer;" class="tiktok"><i class="fa-solid fa-arrow-up"></i></a>
-  </div>
-    <div  id="root"></div>
+   
+    <div style=" background-color: #eeedee;" id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

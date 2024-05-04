@@ -43,6 +43,12 @@ const responsive = {
   },
 };
 const BodyGuild = () => {
+  let arrayimg = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyOt3MZvMua7kB_YVGYLtlW6YN-_ycJu_dtf3HrKWeng&s",
+    "https://truongquocthao.com/Uploads/caclophoc/digital-creation/khoa-hoc-digital-creation-sang-tao-so-thoi-trang-9-2020-tqt.jpg",
+    "https://edubit.vn/data/blog/photo_kinh-doanh-khoa-hoc-online-1.jpg_1592382163.jpg?v=1592382163",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ8If6BAQEE2IIaHmOL4077pbzln2K5ATFtX7a-SzZIQ&s",
+  ];
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -51,7 +57,14 @@ const BodyGuild = () => {
 
   return (
     <>
-      <Box gridColumn="span 4" mt={15} gridRow="span 2" overflow="auto">
+      <Box
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        gridColumn="span 4"
+        mt={15}
+        gridRow="span 2"
+        overflow="auto"
+      >
         <Box
           display="flex"
           justifyContent="space-between"
@@ -82,7 +95,7 @@ const BodyGuild = () => {
           itemClass="carousel-item-padding-10-px"
           responsive={responsive}
         >
-          {[...Array(3)].map((_, index) => (
+          {arrayimg.map((item) => (
             <Card>
               <CardHeader
                 avatar={
@@ -100,9 +113,13 @@ const BodyGuild = () => {
                 subheader="September 14, 2016"
               />
               <CardMedia
+                style={{
+                  maxHeight: "300px",
+                  minHeight: "300px",
+                  objectFit: "cover",
+                }}
                 component="img"
-                height="194"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wvyrySObgnmV7ycW4LE5EA0LaMUwMIlZZVMTAh_TPA&s"
+                image={item}
                 alt="Paella dish"
               />
               <CardContent>

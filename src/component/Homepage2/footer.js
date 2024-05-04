@@ -3,18 +3,15 @@ const Footer = () => {
     <>
       <footer>
         <div style={{ flexBasis: "20%" }} class="footer-column">
-          <h2>SUNGA VINA COMPANY LIMITED</h2>
+          <h2>TNHH SAMURAI VN</h2>
         </div>
         <div class="footer-column">
           <h2>CONTACT</h2>
           <ul>
-            <li>Email: phototime1974@gmail.com</li>
-            <li>Phone: 036 935 7270</li>
+            <li>Email: xxxxx@gmail.com</li>
+            <li>Phone: xxxxxx</li>
             <hr></hr>
-            <li>
-              39 Nguyen Gia Tri, Ward 25, Binh Thanh District, Ho Chi Minh City,
-              Vietnam
-            </li>
+            <li>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
             <hr></hr>
             <li style={{ fontSize: "1.3rem" }} className="cssforIconFooter">
               <i
