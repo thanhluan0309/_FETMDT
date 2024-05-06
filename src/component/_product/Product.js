@@ -1,4 +1,4 @@
-import Navbar from "../_navbar/navbar";
+import Navbar from "../_productDetails.js/Components/Navbar";
 import Footer from "../Homepage2/footer";
 import { Box } from "@mui/material";
 import Chip from "@mui/material/Chip";
@@ -13,12 +13,21 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Unstable_Grid2";
+import ChatIcon from "@mui/icons-material/Chat";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import { useNavigate } from "react-router-dom";
 const Product = () => {
+  let nav = useNavigate();
   return (
     <>
-      <div style={{ backgroundColor: "white" }} className="container">
+      <div
+        style={{ backgroundColor: "white", padding: "0px" }}
+        className="container"
+      >
         <Navbar></Navbar>
-
+      </div>
+      <div style={{ backgroundColor: "white" }} className="container">
         <div className="col-12 ">
           <img
             className="bgtitle"
@@ -140,12 +149,18 @@ const Product = () => {
             >
               {Array.from(Array(9)).map((_, index) => (
                 <Grid display={"flex"} xs={2} sm={4} md={4} key={index}>
-                  <Card style={{ margin: "auto" }} sx={{ maxWidth: 345 }}>
+                  <Card
+                    style={{ margin: "auto", cursor: "pointer" }}
+                    sx={{ maxWidth: 345 }}
+                  >
                     <CardMedia
                       component="img"
                       alt="green iguana"
                       height="140"
                       image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlaU53EKL2Lsco4UnmiuPpQh4vqVvdgho9HoVFAw--mw&s"
+                      onClick={() => {
+                        nav(`/pDetails/${index}`);
+                      }}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
@@ -196,7 +211,12 @@ const Product = () => {
             </Grid>
           </Box>
         </Box>
-        <Footer></Footer>
+        <div style={{ padding: 0 }} className="container">
+          <Box mt={15}>
+            {" "}
+            <Footer></Footer>
+          </Box>
+        </div>
       </div>
     </>
   );

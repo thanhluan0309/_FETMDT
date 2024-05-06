@@ -1,4 +1,5 @@
-import Navbar from "../_navbar/navbar";
+import Navbar from "../_productDetails.js/Components/Navbar";
+import NavbarO from "../_navbar/navbar";
 import HeadTitle from "./body";
 import Carousel from "./carouselProduct";
 import "./index.css";
@@ -7,6 +8,7 @@ import BodyGuild from "./BodyGuild";
 import ListUserProduct from "./ListUserProduct";
 import Footer from "./footer";
 import Socicalcontact from "../Socialcontact.js/Socialcontact";
+
 const Homepage2 = () => {
   return (
     <>
@@ -35,7 +37,7 @@ const Homepage2 = () => {
               </Typography>
               <Typography>Nền thảng hổ trợ Kinh Doanh Online</Typography>
               <Typography mt={2}>
-                Tải khoảng của bạn đang là<bold> tài khoảng dùng thử</bold>, một
+                Tải khoản của bạn đang là<bold> tài khoảng dùng thử</bold>, một
                 số tính năng sẽ bị hạn chế và sẽ sớm hết hạn. Hãy nâng cấp tài
                 khoản ngay để cùng kinh doanh nhé!
               </Typography>

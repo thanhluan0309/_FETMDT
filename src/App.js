@@ -18,6 +18,7 @@ import Homepage2 from "./component/Homepage2/Homepage2";
 
 import Auth from "./component/Auth/Auth";
 import Dowload from "./component/Homepage/DowloadApp/Dowload";
+import ProductDetails from "./component/_productDetails.js/ProductDetails";
 function App() {
   return (
     <Routes>
@@ -26,6 +27,10 @@ function App() {
       <Route path="/register" element={<Auth check="register"></Auth>}></Route>
       <Route path="/homepage" element={<Homepage2></Homepage2>}></Route>
       <Route path="/product" element={<Product></Product>}></Route>
+      <Route
+        path="/pDetails/:productid"
+        element={<ProductDetails></ProductDetails>}
+      ></Route>
 
       <Route path="/aboutus" element={<PageAboutUs></PageAboutUs>}></Route>
       <Route path="/dowload" element={<Dowload></Dowload>}></Route>
