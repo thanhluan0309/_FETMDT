@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import menu from "../Pictures/icon-menu.svg";
 import logo from "../Pictures/logo.svg";
 import avatar from "../Pictures/image-avatar.png";
@@ -6,7 +6,25 @@ import { Badge, IconButton } from "@mui/material";
 import Cart from "./Cart";
 import MobileLinksDrawer from "./MobileLinksDrawer";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 const Navbar = ({ onOrderedQuant, onReset }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   let nav = useNavigate();
   const [showCart, setShowCart] = useState(false);
   const [open, setOpen] = useState(false);
@@ -15,7 +33,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
   };
 
   return (
-    <header>
+    <header className={`sticky-header ${isScrolled ? "scrolled" : ""}`}>
       <nav>
         <section className="left">
           <div className="imgs">

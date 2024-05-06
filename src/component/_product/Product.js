@@ -17,6 +17,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import ChatIcon from "@mui/icons-material/Chat";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useNavigate } from "react-router-dom";
+import "./style.css"
 const Product = () => {
   let nav = useNavigate();
   return (
