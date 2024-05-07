@@ -1,4 +1,4 @@
-import Navbar from "../_productDetails.js/Components/Navbar";
+import Navbar from "../_productDetails/Components/Navbar";
 import Footer from "../Homepage2/footer";
 import { Box } from "@mui/material";
 import Chip from "@mui/material/Chip";
@@ -17,7 +17,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import ChatIcon from "@mui/icons-material/Chat";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useNavigate } from "react-router-dom";
-import "./style.css"
+import "./style.css";
 const Product = () => {
   let nav = useNavigate();
   return (

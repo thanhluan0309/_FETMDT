@@ -1,5 +1,5 @@
-import Navbar from "../_productDetails.js/Components/Navbar";
-import NavbarO from "../_navbar/navbar";
+import Navbar from "../_productDetails/Components/Navbar";
+
 import HeadTitle from "./body";
 import Carousel from "./carouselProduct";
 import "./index.css";

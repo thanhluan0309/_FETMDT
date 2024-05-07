@@ -1,11 +1,8 @@
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Avatar } from "@mui/material";
-import img1 from "../../imgchinhanh/GIGA.png";
-import img2 from "../../imgchinhanh/CINESTAR.png";
-import img3 from "../../imgchinhanh/D2.png";
+
 import Slider from "react-slick";
-import "./index.css"
+import "./index.css";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },

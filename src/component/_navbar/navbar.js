@@ -1,191 +1,157 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
-import EmailIcon from "@mui/icons-material/Email";
-import { useNavigate } from "react-router-dom";
-const pages = ["Sản phẩm", "Người dùng", "Bài viết"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+import Navbar from "../_productDetails/Components/Navbar";
 
 function ResponsiveAppBar() {
-  let nav = useNavigate();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
-    <AppBar style={{ backgroundColor: "#34a853" }} position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            onClick={() => {
-              nav("/homepage");
-            }}
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+    <Navbar></Navbar>
+    // <AppBar style={{ backgroundColor: "#34a853" }} position="static">
+    //   <Container maxWidth="xl">
+    //     <Toolbar disableGutters>
+    //       <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+    //       <Typography
+    //         variant="h6"
+    //         noWrap
+    //         component="a"
+    //         onClick={() => {
+    //           nav("/homepage");
+    //         }}
+    //         sx={{
+    //           mr: 2,
+    //           display: { xs: "none", md: "flex" },
+    //           fontFamily: "monospace",
+    //           fontWeight: 700,
+    //           letterSpacing: ".3rem",
+    //           color: "inherit",
+    //           textDecoration: "none",
+    //         }}
+    //       >
+    //         LOGO
+    //       </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem key={1}>
-                <Typography
-                  onClick={() => {
-                    nav("/product");
-                  }}
-                  textAlign="center"
-                >
-                  Sản phẩm
-                </Typography>
-              </MenuItem>
-              <MenuItem key={2} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Người dùng</Typography>
-              </MenuItem>
-              <MenuItem key={3} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Bài viết</Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            onClick={() => {
-              nav("/product");
-            }}
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              key={1}
-              onClick={() => {
-                nav("/product");
-              }}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Sản phẩm
-            </Button>
-          </Box>
+    //       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    //         <IconButton
+    //           size="large"
+    //           aria-label="account of current user"
+    //           aria-controls="menu-appbar"
+    //           aria-haspopup="true"
+    //           onClick={handleOpenNavMenu}
+    //           color="inherit"
+    //         >
+    //           <MenuIcon />
+    //         </IconButton>
+    //         <Menu
+    //           id="menu-appbar"
+    //           anchorEl={anchorElNav}
+    //           anchorOrigin={{
+    //             vertical: "bottom",
+    //             horizontal: "left",
+    //           }}
+    //           keepMounted
+    //           transformOrigin={{
+    //             vertical: "top",
+    //             horizontal: "left",
+    //           }}
+    //           open={Boolean(anchorElNav)}
+    //           onClose={handleCloseNavMenu}
+    //           sx={{
+    //             display: { xs: "block", md: "none" },
+    //           }}
+    //         >
+    //           <MenuItem key={1}>
+    //             <Typography
+    //               onClick={() => {
+    //                 nav("/product");
+    //               }}
+    //               textAlign="center"
+    //             >
+    //               Sản phẩm
+    //             </Typography>
+    //           </MenuItem>
+    //           <MenuItem key={2} onClick={handleCloseNavMenu}>
+    //             <Typography textAlign="center">Người dùng</Typography>
+    //           </MenuItem>
+    //           <MenuItem key={3} onClick={handleCloseNavMenu}>
+    //             <Typography textAlign="center">Bài viết</Typography>
+    //           </MenuItem>
+    //         </Menu>
+    //       </Box>
+    //       <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+    //       <Typography
+    //         variant="h5"
+    //         noWrap
+    //         component="a"
+    //         onClick={() => {
+    //           nav("/product");
+    //         }}
+    //         sx={{
+    //           mr: 2,
+    //           display: { xs: "flex", md: "none" },
+    //           flexGrow: 1,
+    //           fontFamily: "monospace",
+    //           fontWeight: 700,
+    //           letterSpacing: ".3rem",
+    //           color: "inherit",
+    //           textDecoration: "none",
+    //         }}
+    //       >
+    //         LOGO
+    //       </Typography>
+    //       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+    //         <Button
+    //           key={1}
+    //           onClick={() => {
+    //             nav("/product");
+    //           }}
+    //           sx={{ my: 2, color: "white", display: "block" }}
+    //         >
+    //           Sản phẩm
+    //         </Button>
+    //       </Box>
 
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            sx={{ flexGrow: 0 }}
-          >
-            <Typography p={1} display="flex" alignItems={"center"}>
-              <NotificationAddIcon fontSize={"medium"}></NotificationAddIcon>
-            </Typography>
-            <Typography p={1} display="flex" alignItems={"center"}>
-              <EmailIcon fontSize={"medium"}></EmailIcon>
-            </Typography>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+    //       <Box
+    //         display="flex"
+    //         justifyContent="space-between"
+    //         sx={{ flexGrow: 0 }}
+    //       >
+    //         <Typography p={1} display="flex" alignItems={"center"}>
+    //           <NotificationAddIcon fontSize={"medium"}></NotificationAddIcon>
+    //         </Typography>
+    //         <Typography p={1} display="flex" alignItems={"center"}>
+    //           <EmailIcon fontSize={"medium"}></EmailIcon>
+    //         </Typography>
+    //         <Tooltip title="Open settings">
+    //           <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
+    //             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+    //           </IconButton>
+    //         </Tooltip>
 
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    //         <Menu
+    //           sx={{ mt: "45px" }}
+    //           id="menu-appbar"
+    //           anchorEl={anchorElUser}
+    //           anchorOrigin={{
+    //             vertical: "top",
+    //             horizontal: "right",
+    //           }}
+    //           keepMounted
+    //           transformOrigin={{
+    //             vertical: "top",
+    //             horizontal: "right",
+    //           }}
+    //           open={Boolean(anchorElUser)}
+    //           onClose={handleCloseUserMenu}
+    //         >
+    //           {settings.map((setting) => (
+    //             <MenuItem key={setting} onClick={handleCloseUserMenu}>
+    //               <Typography textAlign="center">{setting}</Typography>
+    //             </MenuItem>
+    //           ))}
+    //         </Menu>
+    //       </Box>
+    //     </Toolbar>
+    //   </Container>
+    // </AppBar>
   );
 }
 export default ResponsiveAppBar;

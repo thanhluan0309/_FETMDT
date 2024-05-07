@@ -1,6 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
 import styled from "styled-components";
 import AccountBox from "../AccountBox/index";
 

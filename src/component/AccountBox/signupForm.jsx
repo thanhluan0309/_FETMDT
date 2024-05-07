@@ -8,13 +8,35 @@ import {
   MutedLink,
   SubmitButton,
 } from "./common";
+
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
-
 import { Typography } from "@mui/material";
 import { Label } from "@mui/icons-material";
+
+import { HandleRegister } from "./handle";
 export function SignupForm(props) {
   const { switchToSignin } = useContext(AccountContext);
+
+  const handlesingup = async () => {
+    let dt = {
+      name: "tesst level 4",
+      phone: "tesst level 4",
+      mail: "tesst level 4",
+      pdate: "tesst level 4",
+      career: "tesst level 4",
+    };
+    try {
+      let check = await HandleRegister(dt);
+      console.log("check " + JSON.stringify(check));
+      if (check.success) {
+        alert("success");
+      } else {
+        alert(check.message);
+      }
+    } catch (error) {}
+  };
+
   return (
     <BoxContainer>
       <FormContainer>
@@ -34,7 +56,9 @@ export function SignupForm(props) {
         <Input id="repassword" type="password" placeholder="Nhập nghề nghiệp" />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <SubmitButton type="submit">Sign Up</SubmitButton>
+      <SubmitButton onClick={handlesingup} type="submit">
+        Sign Up
+      </SubmitButton>
       <Marginer direction="vertical" margin="5px" />
       <LineText>
         Already have an account?{" "}

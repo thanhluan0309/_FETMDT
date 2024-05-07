@@ -32,7 +32,7 @@ export function InviteForm(props) {
       <Marginer direction="vertical" margin="1.6em" />
       <SubmitButton
         onClick={() => {
-          nav("/homepage");
+          nav("/product");
         }}
       >
         Kiểm tra
