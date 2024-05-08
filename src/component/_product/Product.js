@@ -17,8 +17,12 @@ import Grid from "@mui/material/Unstable_Grid2";
 import ChatIcon from "@mui/icons-material/Chat";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
+import { useEffect } from "react";
+
 const Product = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   let nav = useNavigate();
   return (
     <>
@@ -138,8 +142,8 @@ const Product = () => {
           </div>
         </div>
         <Box mt={15} gridColumn="span 7">
-          <Typography p="15px" variant="inherit" fontWeight="600">
-            Hoạt động thành viên
+          <Typography variant="h5" fontWeight={600}>
+            Dành cho bạn
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
             <Grid

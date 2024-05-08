@@ -6,7 +6,7 @@ import { Badge, IconButton } from "@mui/material";
 import Cart from "./Cart";
 import MobileLinksDrawer from "./MobileLinksDrawer";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
+
 const Navbar = ({ onOrderedQuant, onReset }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -75,9 +75,6 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
                 >
                   Khách hàng
                 </button>
-              </li>
-              <li>
-                <button>Đơn hàng</button>
               </li>
               <li>
                 <button>Đơn hàng</button>

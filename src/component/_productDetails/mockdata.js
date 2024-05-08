@@ -20,3 +20,15 @@ export const Images = [
       "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
   },
 ];
+
+export const MockDataProduct = [];
+
+export const MockDataProductDetails = {
+  name: "Fall Limited Edition Sneakers",
+  description:
+    "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer",
+  sale: 0,
+  amount: 12000,
+  picture: [],
+  currency: "VND",
+};

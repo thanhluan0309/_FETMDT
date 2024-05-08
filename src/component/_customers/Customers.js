@@ -13,17 +13,9 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import CallIcon from "@mui/icons-material/Call";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+
 import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-import Grid from "@mui/material/Unstable_Grid2";
-import ChatIcon from "@mui/icons-material/Chat";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import { FormControl, Input, FormHelperText, InputLabel } from "@mui/material";
+
 import { useState } from "react";
 import styled from "styled-components";
 const Customer = () => {
@@ -127,7 +119,10 @@ const Customer = () => {
   };
   return (
     <>
-      <div className="container" style={{ padding: "0px" }}>
+      <div
+        className="container"
+        style={{ padding: "0px", backgroundColor: "white" }}
+      >
         {" "}
         <Navbar></Navbar>
       </div>

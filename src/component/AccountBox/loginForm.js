@@ -8,43 +8,61 @@ import {
   MutedLink,
   SubmitButton,
 } from "./common";
+
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-import { HandleLogin as hdlgin } from "./handle";
-
-export function LoginForm(props) {
+import { HandleLogin } from "../../apis/handleAccount";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
+import { useMutation } from "@tanstack/react-query";
+export const LoginForm = (props) => {
   let nav = useNavigate();
+  const { switchToSignup, switchToInvite } = useContext(AccountContext);
+  const [validationError, setValidationError] = useState({});
+  const [isLoading, setIsloading] = useState(false);
+
   const [formLogin, setFormLogin] = useState({
-    username: "",
+    email: "",
     password: "",
   });
-  const { switchToSignup, switchToInvite } = useContext(AccountContext);
 
   const onChangeLogin = (event) => {
+    setValidationError({});
     setFormLogin({ ...formLogin, [event.target.name]: event.target.value });
   };
-  const handlelogin = async () => {
-    try {
-      // let check = await hdlgin(formLogin);
-      // if (check) {
-      //   nav("/homepage");
-      // }
-      nav("/product");
-    } catch (error) {
-      alert("Loi");
-    }
+
+  const mutation = useMutation({
+    mutationFn: (body) => {
+      return HandleLogin(body);
+    },
+  });
+  const Handlelogin = () => {
+    setIsloading(true);
+    mutation.mutate(formLogin, {
+      onSuccess: (data) => {
+        if (data.data) {
+          return nav("/product");
+        }
+        setValidationError(data);
+        setIsloading(false);
+      },
+      onError: (error) => {
+        console.log(">>> error " + error);
+      },
+    });
   };
+
   return (
     <BoxContainer>
       <FormContainer>
         <Input
           type="username"
           onChange={onChangeLogin}
-          name="username"
-          value={formLogin.username}
+          name="email"
+          value={formLogin.email}
           placeholder="Tên đăng nhập"
         />
         <Input
@@ -56,6 +74,15 @@ export function LoginForm(props) {
         />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        {validationError?.errors &&
+          Object.entries(validationError?.errors).map(([key, error], index) => (
+            <Alert key={index} severity="error">
+              {" "}
+              {error?.msg}
+            </Alert>
+          ))}
+      </Stack>
       <MutedLink href="#">Forget your password?</MutedLink>
       <BoldLink
         direction="vertical"
@@ -73,9 +100,11 @@ export function LoginForm(props) {
         // onClick={() => {
         //   nav("/homepage");
         // }}
-        onClick={handlelogin}
+        type="button"
+        disabled={isLoading}
+        onClick={Handlelogin}
       >
-        Sign in
+        {isLoading ? "Loading...." : "  Sign in"}
       </SubmitButton>
       <Marginer direction="vertical" margin="5px" />
       <LineText>
@@ -86,4 +115,4 @@ export function LoginForm(props) {
       </LineText>
     </BoxContainer>
   );
-}
+};

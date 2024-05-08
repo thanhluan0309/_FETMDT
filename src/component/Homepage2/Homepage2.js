@@ -1,5 +1,4 @@
 import Navbar from "../_productDetails/Components/Navbar";
-
 import HeadTitle from "./body";
 import Carousel from "./carouselProduct";
 import "./index.css";
@@ -7,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 import BodyGuild from "./BodyGuild";
 import ListUserProduct from "./ListUserProduct";
 import Footer from "./footer";
-import Socicalcontact from "../Socialcontact.js/Socialcontact";
+import Socicalcontact from "../Socialcontact/Socialcontact";
 
 const Homepage2 = () => {
   return (

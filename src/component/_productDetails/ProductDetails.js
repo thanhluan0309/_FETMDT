@@ -1,31 +1,39 @@
 import Navbar from "./Components/Navbar";
-import NavbarO from "../_navbar/navbar";
 import Footer from "../Homepage2/footer";
-import { Box } from "@mui/material";
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-
 import { Images as images } from "./mockdata";
-
 import "./App.css";
 import { Container } from "@mui/material";
-
+import { useEffect } from "react";
 import Gallery from "./Components/Gallery";
 import Description from "./Components/Description";
 import MobileGallery from "./Components/MobileGallery";
 
+
+
+
 const ProductDetails = () => {
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [quant, setQuant] = React.useState(0);
   const [orderedQuant, setOrderedQuant] = React.useState(0);
 

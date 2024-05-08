@@ -11,6 +11,8 @@ import Homepage2 from "./component/Homepage2/Homepage2";
 import Auth from "./component/Auth/Auth";
 import ProductDetails from "./component/_productDetails/ProductDetails";
 import Customer from "./component/_customers/Customers";
+
+
 function App() {
   return (
     <Routes>
