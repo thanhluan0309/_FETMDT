@@ -1,5 +1,6 @@
-import Navbar from "./Components/Navbar";
-import Footer from "../Homepage2/footer";
+import Footer from "../../component/Footer/footer";
+import Navbar from "../../component/Navbar/navbar";
+
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
@@ -13,11 +14,7 @@ import Gallery from "./Components/Gallery";
 import Description from "./Components/Description";
 import MobileGallery from "./Components/MobileGallery";
 
-
-
-
 const ProductDetails = () => {
-
   const style = {
     position: "absolute",
     top: "50%",

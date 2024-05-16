@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { URL_BACKEND } from "../environment/environment";
+import { URL_BACKEND } from "../../utils/contanst/contanst";
 export const HandleLogin = async (req) => {
   try {
     const res = await Axios.post(
@@ -33,11 +33,17 @@ export const HandleLogin = async (req) => {
 
 export const getAllUser = async (req) => {
   try {
-    const res = await Axios.get(`https://tmdt3.vercel.app/Auth/getAll`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await Axios.get(
+      `https://tmdt3.vercel.app/Auth/getAll`,
+
+      {
+        headers: {
+          "Content-Type": "application/json",
+          // Thêm các header khác nếu cần
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
     return res;
   } catch (error) {
     if (error.response) {

@@ -13,7 +13,7 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { HandleLogin } from "../../apis/handleAccount";
+import { HandleLogin } from "../../services/handleAccount/handleAccount";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
@@ -44,6 +44,8 @@ export const LoginForm = (props) => {
     mutation.mutate(formLogin, {
       onSuccess: (data) => {
         if (data.data) {
+          localStorage.setItem("accessToken", data.data.data.access_token);
+
           return nav("/product");
         }
         setValidationError(data);

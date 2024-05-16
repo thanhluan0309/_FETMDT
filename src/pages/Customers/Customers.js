@@ -1,7 +1,7 @@
 import BarChart from "./Barchart";
 import { Box } from "@mui/material";
-import Navbar from "../_productDetails/Components/Navbar";
-import Footer from "../Homepage2/footer";
+import NavbarCommon from "../../component/Navbar/navbar";
+import Footer from "../../component/Footer/footer";
 
 import * as React from "react";
 import List from "@mui/material/List";
@@ -124,7 +124,7 @@ const Customer = () => {
         style={{ padding: "0px", backgroundColor: "white" }}
       >
         {" "}
-        <Navbar></Navbar>
+        <NavbarCommon></NavbarCommon>
       </div>
       <div style={{ backgroundColor: "white" }} className="container">
         <Box>

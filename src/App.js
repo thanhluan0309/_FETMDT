@@ -6,12 +6,12 @@ import {
   Routes,
 } from "react-router-dom";
 
-import Product from "./component/_product/Product";
-import Homepage2 from "./component/Homepage2/Homepage2";
-import Auth from "./component/Auth/Auth";
-import ProductDetails from "./component/_productDetails/ProductDetails";
-import Customer from "./component/_customers/Customers";
+import Product from "./pages/Product/Product";
+import Homepage from "./pages/Homepage/Homepage";
+import Auth from "./pages/Auth/Auth";
+import ProductDetails from "./pages/productDetails/ProductDetails";
 
+import Customer from "./pages/Customers/Customers";
 
 function App() {
   return (
@@ -19,8 +19,9 @@ function App() {
       <Route path="/" element={<Auth></Auth>}></Route>
       <Route path="/login" element={<Auth check="login"></Auth>}></Route>
       <Route path="/register" element={<Auth check="register"></Auth>}></Route>
-      <Route path="/homepage" element={<Homepage2></Homepage2>}></Route>
+      <Route path="/homepage" element={<Homepage></Homepage>}></Route>
       <Route path="/product" element={<Product></Product>}></Route>
+
       <Route
         path="/pDetails/:productid"
         element={<ProductDetails></ProductDetails>}

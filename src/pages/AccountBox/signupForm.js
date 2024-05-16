@@ -12,7 +12,7 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 import { Typography } from "@mui/material";
 import { Label } from "@mui/icons-material";
-import { HandleRegister } from "../../apis/handleAccount";
+import { HandleRegister } from "../../services/handleAccount/handleAccount";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import Alert from "@mui/material/Alert";

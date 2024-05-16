@@ -1,5 +1,6 @@
-import Navbar from "../_productDetails/Components/Navbar";
-import Footer from "../Homepage2/footer";
+import Navbar from "../../component/Navbar/navbar";
+import Footer from "../../component/Footer/footer";
+import PopupNotice from "../../component/PopupNotice/PopupNotice";
 import { Box } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
@@ -23,6 +24,32 @@ const Product = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  function getCookieValue(cookieName) {
+    // Get all cookies as a string
+    const cookies = document.cookie;
+
+    // Split the cookie string into individual cookies
+    const cookieArray = cookies.split(";");
+
+    // Loop through each cookie to find the one matching the given name
+    for (let cookie of cookieArray) {
+      // Trim any leading whitespace from the cookie
+      cookie = cookie.trim();
+
+      // Check if this cookie starts with the desired name followed by '='
+      if (cookie.startsWith(`${cookieName}=`)) {
+        // Return the value (everything after the '=')
+        return cookie.substring(cookieName.length + 1);
+      }
+    }
+
+    // If the cookie isn't found, return null or an appropriate value
+    return null;
+  }
+
+  // Example usage:
+  const value = getCookieValue("refresh_token");
+  console.log(value);
   let nav = useNavigate();
   return (
     <>
@@ -31,6 +58,7 @@ const Product = () => {
         className="container"
       >
         <Navbar></Navbar>
+        <PopupNotice></PopupNotice>
       </div>
       <div style={{ backgroundColor: "white" }} className="container">
         <div className="col-12 ">

@@ -115,13 +115,41 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               </svg>
             </Badge>
           </IconButton>
-          <img
-            src={
-              "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
-            }
-            alt="img-avatar"
-            className="avatar"
-          />
+          $
+          <div class="btn-group">
+            <img
+              id="triggerId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              src={
+                "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
+              }
+              alt="img-avatar"
+              className="avatar"
+            />
+
+            <div
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="triggerId"
+            >
+              <a class="dropdown-item" href="#">
+                Thông tin tài khoản
+              </a>
+              <a class="dropdown-item disabled" href="#">
+                Doanh thu
+              </a>
+
+              <a
+                class="dropdown-item"
+                onClick={() => {
+                  alert("logout");
+                }}
+              >
+                Logout
+              </a>
+            </div>
+          </div>
           {showCart && (
             <Cart
               onOrderedQuant={onOrderedQuant}
