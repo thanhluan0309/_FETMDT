@@ -1,7 +1,5 @@
 import BarChart from "./Barchart";
 import { Box } from "@mui/material";
-import NavbarCommon from "../../component/Navbar/navbar";
-import Footer from "../../component/Footer/footer";
 
 import * as React from "react";
 import List from "@mui/material/List";
@@ -119,13 +117,6 @@ const Customer = () => {
   };
   return (
     <>
-      <div
-        className="container"
-        style={{ padding: "0px", backgroundColor: "white" }}
-      >
-        {" "}
-        <NavbarCommon></NavbarCommon>
-      </div>
       <div style={{ backgroundColor: "white" }} className="container">
         <Box>
           <BarChart></BarChart>
@@ -277,9 +268,7 @@ const Customer = () => {
           padding: "0px",
           paddingTop: "100px",
         }}
-      >
-        <Footer></Footer>
-      </div>
+      ></div>
     </>
   );
 };

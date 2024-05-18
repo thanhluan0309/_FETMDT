@@ -6,13 +6,19 @@ import prod2 from "../Pictures/image-product-2.jpg";
 import prod3 from "../Pictures/image-product-3.jpg";
 import prod4 from "../Pictures/image-product-4.jpg";
 
-const IMAGES = [prod1, prod2, prod3, prod4];
+import thumb1 from "../Pictures/image-product-1-thumbnail.jpg";
+import thumb2 from "../Pictures/image-product-2-thumbnail.jpg";
+import thumb3 from "../Pictures/image-product-3-thumbnail.jpg";
+import thumb4 from "../Pictures/image-product-4-thumbnail.jpg";
 
-const Gallery = ({ pictrue, mainPicktrue }) => {
-  const [currentImage, setCurrentImage] = useState([] || pictrue[0]);
-  const [currentPassedImage, setCurrentPassedImage] = useState(
-    [] || pictrue[0]
-  );
+// const IMAGES = [prod1, prod2, prod3, prod4];
+// const THUMBS = [prod1, prod2, prod3, prod4];
+
+const Gallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
+  const initialImage = IMAGES[0];
+  const initialThumbs = THUMBS[0];
+  const [currentImage, setCurrentImage] = useState(initialImage);
+  const [currentPassedImage, setCurrentPassedImage] = useState(initialThumbs);
 
   const [open, setOpen] = useState(false);
   const handleClick = (index) => {
@@ -38,7 +44,11 @@ const Gallery = ({ pictrue, mainPicktrue }) => {
     <section className="gallery-holder hide-in-mobile">
       <section style={{ backgroundColor: "white" }} className="gallery">
         <div className="image">
-          <img src={currentImage} alt="product-1" onClick={handleToggle} />
+          <img
+            src={initialImage || currentImage}
+            alt="product-1"
+            onClick={handleToggle}
+          />
         </div>
         <BackdropGallery
           handleClose={handleClose}
@@ -46,8 +56,8 @@ const Gallery = ({ pictrue, mainPicktrue }) => {
           currentPassedImage={currentPassedImage}
         />
         <div className="thumbnails">
-          {pictrue &&
-            pictrue.map((th, index) => {
+          {THUMBS &&
+            THUMBS.map((th, index) => {
               return (
                 <div
                   className="img-holder"

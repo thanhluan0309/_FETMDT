@@ -1,12 +1,40 @@
 .App {
   text-align: center;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::-webkit-scrollbar {
+  width: 2px;
+  height: 8px; /* Giảm chiều cao của thanh cuộn */
 }
 
+::-webkit-scrollbar-track {
+  background-color: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+@media (min-width: 769px) {
+  .hide-in-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-in-mobile {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -28,6 +56,141 @@
   color: #61dafb;
 }
 
+.ticket {
+  width: 320px;
+  height: 180px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 50%;
+}
+
+.ticket::before {
+  top: -11px;
+  left: -11px;
+}
+
+.ticket::after {
+  bottom: -11px;
+  right: -11px;
+}
+
+.ticket::before,
+.ticket::after,
+.ticket::before::before,
+.ticket::before::after,
+.ticket::after::before,
+.ticket::after::after {
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.ticket::before::before,
+.ticket::after::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+}
+
+.ticket::before::before {
+  top: 0;
+  right: 40px;
+}
+
+.ticket::after::before {
+  bottom: 0;
+  left: 40px;
+}
+
+.ticket::before::after,
+.ticket::after::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+}
+
+.ticket::before::after {
+  top: 0;
+  left: 40px;
+}
+
+.ticket::after::after {
+  bottom: 0;
+  right: 40px;
+}
+
+.ticket-content {
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ticket-content h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ticket-content p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.ticket-content .date {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.decoration {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #333;
+  z-index: 0;
+}
+
+.decoration::before,
+.decoration::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.decoration::before {
+  left: -6px;
+}
+
+.decoration::after {
+  right: -6px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

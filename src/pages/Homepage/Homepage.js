@@ -2,7 +2,7 @@ import Navbar from "../../component/Navbar/navbar";
 import Footer from "../../component/Footer/footer";
 import HeadTitle from "./body";
 import Carousel from "./carouselProduct";
-import "./index.css";
+
 import { Box, Typography } from "@mui/material";
 import BodyGuild from "./BodyGuild";
 import ListUserProduct from "./ListUserProduct";
@@ -14,7 +14,6 @@ const Homepage = () => {
         style={{ backgroundColor: "white" }}
         className="container csscontainer"
       >
-        <Navbar></Navbar>
         <PopupNotice></PopupNotice>
         <div className="col-12 ">
           <img
@@ -26,10 +25,6 @@ const Homepage = () => {
         <Carousel></Carousel>
         <BodyGuild></BodyGuild>
         <ListUserProduct></ListUserProduct>
-        <Box mt={15}>
-          {" "}
-          <Footer></Footer>
-        </Box>
       </div>
     </>
   );

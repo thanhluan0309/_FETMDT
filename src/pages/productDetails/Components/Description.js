@@ -6,7 +6,13 @@ import * as React from "react";
 
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-const Description = ({ onQuant, onAdd, onRemove, onSetOrderedQuant }) => {
+const Description = ({
+  onQuant,
+  onAdd,
+  onRemove,
+  onSetOrderedQuant,
+  stateProduct,
+}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -27,25 +33,41 @@ const Description = ({ onQuant, onAdd, onRemove, onSetOrderedQuant }) => {
     px: 4,
     pb: 3,
   };
- 
+
   return (
     <section className="description">
       <p className="pre">sneaker company</p>
-      <h1>fall limited edition sneakers</h1>
-      <p className="desc">
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they’ll withstand everything the
-        weather can offer
-      </p>
+      <h1>{stateProduct && stateProduct?.name}</h1>
+      <p className="desc">{stateProduct && stateProduct?.description}</p>
       <div className="price">
         <div className="main-tag">
-          <p>12000</p>
-          <p>50%</p>
+          <p>
+            {stateProduct &&
+              parseInt(stateProduct?.price).toLocaleString("en-US")}{" "}
+            đ
+          </p>
+          <p>{stateProduct && stateProduct?.discount}%</p>
         </div>
-        <s>$250.00</s>
-        <Typography className="text-secondary">Đã bán 236,453</Typography>
+        {stateProduct && stateProduct?.discount > 0 ? (
+          <s>
+            {parseInt(
+              stateProduct?.price * stateProduct?.discount + stateProduct?.price
+            ).toLocaleString("en-US")}
+          </s>
+        ) : (
+          ""
+        )}
+
+        <Typography className="text-secondary">
+          Đã bán{" "}
+          {stateProduct && parseInt(stateProduct?.sold).toLocaleString("en-US")}
+        </Typography>
       </div>
-      <Box className="text-primary cssforloi">Số tiền lợi nhuận: 12.000đ</Box>
+      <Box className="text-primary cssforloi">
+        Số tiền lợi nhuận:{" "}
+        {stateProduct && parseInt(stateProduct?.Profit).toLocaleString("en-US")}
+        đ
+      </Box>
       <div className="buttons">
         <QuantityButton onQuant={onQuant} onRemove={onRemove} onAdd={onAdd} />
         <button

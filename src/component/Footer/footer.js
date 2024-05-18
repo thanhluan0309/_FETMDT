@@ -3,7 +3,7 @@ const Footer = () => {
     <>
       <footer>
         <div style={{ flexBasis: "20%" }} class="footer-column">
-          <h2>TNHH SAMURAI VN</h2>
+          <h2>TIKPII Q2</h2>
         </div>
         <div class="footer-column">
           <h2>CONTACT</h2>
@@ -11,7 +11,7 @@ const Footer = () => {
             <li>Email: xxxxx@gmail.com</li>
             <li>Phone: xxxxxx</li>
             <hr></hr>
-            <li>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+            <li>xxxxxxxxxxxxxxx</li>
             <hr></hr>
             <li style={{ fontSize: "1.3rem" }} className="cssforIconFooter">
               <i

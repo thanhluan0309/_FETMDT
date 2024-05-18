@@ -21,8 +21,6 @@ export const Images = [
   },
 ];
 
-export const MockDataProduct = [];
-
 export const MockDataProductDetails = {
   name: "Fall Limited Edition Sneakers",
   description:

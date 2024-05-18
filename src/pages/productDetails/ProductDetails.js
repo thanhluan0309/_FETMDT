@@ -1,6 +1,6 @@
-import Footer from "../../component/Footer/footer";
 import Navbar from "../../component/Navbar/navbar";
 
+import Footer from "../../component/Footer/footer";
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
@@ -13,26 +13,28 @@ import { useEffect } from "react";
 import Gallery from "./Components/Gallery";
 import Description from "./Components/Description";
 import MobileGallery from "./Components/MobileGallery";
-
-const ProductDetails = () => {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+import { mockdataProduct } from "../../data/data";
+const ProductDetails = ({ sendDataToBase }) => {
+  const [stateProduct, setStateproduct] = React.useState({});
+  const { productid } = useParams();
   const [quant, setQuant] = React.useState(0);
   const [orderedQuant, setOrderedQuant] = React.useState(0);
+  useEffect(() => {
+    // Giả sử chúng ta có một số dữ liệu cần gửi lên Base
+    let getonOrderedQuant = orderedQuant || 0;
+    let getFonReset = resetQuant || null;
+    const data = {
+      onOrderedQuant: getonOrderedQuant,
+      onReset: getFonReset,
+    };
+    sendDataToBase(data);
+    if (mockdataProduct) {
+      let product = mockdataProduct.filter((item) => item.id === productid);
+      setStateproduct(product[0]);
+      console.log("product get " + JSON.stringify(product));
+    }
+    window.scrollTo(0, 0);
+  }, [orderedQuant]);
 
   const addQuant = () => {
     setQuant(quant + 1);
@@ -63,7 +65,7 @@ const ProductDetails = () => {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-  const { productid } = useParams();
+
   return (
     <>
       <main className="App">
@@ -72,18 +74,18 @@ const ProductDetails = () => {
           component="section"
           maxWidth={"lg"}
         >
-          <Navbar onOrderedQuant={orderedQuant} onReset={resetQuant} />
+          {/* <Navbar onOrderedQuant={orderedQuant} onReset={resetQuant} /> */}
           <section style={{ backgroundColor: "white" }} className="core">
-            <Gallery />
+            <Gallery IMAGES={stateProduct.image} THUMBS={stateProduct.image} />
             <MobileGallery />
             <Description
               onQuant={quant}
               onAdd={addQuant}
               onRemove={removeQuant}
               onSetOrderedQuant={setOrderedQuant}
+              stateProduct={stateProduct}
             />
           </section>
-          <Footer></Footer>
         </Container>
       </main>
     </>

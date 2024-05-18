@@ -34,7 +34,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
 
   return (
     <header className={`sticky-header ${isScrolled ? "scrolled" : ""}`}>
-      <nav>
+      <nav style={{ paddingLeft: "10%", paddingRight: "10%" }}>
         <section className="left">
           <div className="imgs">
             <img
@@ -51,6 +51,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
                 "https://mlfqgcfasixj.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://samurai.com.vn/wp-content/uploads/2024/04/cropped-Thiet-ke-chua-co-ten-17.png"
               }
               alt="logo"
+              width={"100"}
               onClick={() => {
                 nav("/homepage");
               }}
@@ -115,41 +116,13 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               </svg>
             </Badge>
           </IconButton>
-          $
-          <div class="btn-group">
-            <img
-              id="triggerId"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              src={
-                "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
-              }
-              alt="img-avatar"
-              className="avatar"
-            />
-
-            <div
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="triggerId"
-            >
-              <a class="dropdown-item" href="#">
-                Thông tin tài khoản
-              </a>
-              <a class="dropdown-item disabled" href="#">
-                Doanh thu
-              </a>
-
-              <a
-                class="dropdown-item"
-                onClick={() => {
-                  alert("logout");
-                }}
-              >
-                Logout
-              </a>
-            </div>
-          </div>
+          <img
+            src={
+              "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
+            }
+            alt="img-avatar"
+            className="avatar"
+          />
           {showCart && (
             <Cart
               onOrderedQuant={onOrderedQuant}
