@@ -2,6 +2,7 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import React from "react";
 import { useState } from "react";
+import { Container } from "@mui/material";
 const Base = ({ children }) => {
   const [dataFromProduct, setDataFromProduct] = useState(null);
 

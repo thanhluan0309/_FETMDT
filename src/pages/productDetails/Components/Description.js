@@ -48,6 +48,8 @@ const Description = ({
           </p>
           <p>{stateProduct && stateProduct?.discount}%</p>
         </div>
+      </div>
+      <Box>
         {stateProduct && stateProduct?.discount > 0 ? (
           <s>
             {parseInt(
@@ -62,7 +64,7 @@ const Description = ({
           Đã bán{" "}
           {stateProduct && parseInt(stateProduct?.sold).toLocaleString("en-US")}
         </Typography>
-      </div>
+      </Box>
       <Box className="text-primary cssforloi">
         Số tiền lợi nhuận:{" "}
         {stateProduct && parseInt(stateProduct?.Profit).toLocaleString("en-US")}

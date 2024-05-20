@@ -53,7 +53,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               alt="logo"
               width={"100"}
               onClick={() => {
-                nav("/homepage");
+                nav("/product");
               }}
             />
           </div>

@@ -25,6 +25,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { DiscountMB } from "../../component/Styles/PriceText";
 import ChatIcon from "@mui/icons-material/Chat";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
@@ -222,7 +223,7 @@ const Product = () => {
             width: "100%",
             height: "100%",
             paddingLeft: "5px",
-            paddingRight: "10px",
+            paddingRight: "5px",
           }}
         >
           <div class="col-12 mb-2">
@@ -256,14 +257,19 @@ const Product = () => {
           </div>
 
           <Box display={"flex"} p={3}>
-            <Typography
+            {/* <Typography
               fontStyle={"italic"}
               color={"blue"}
               variant="h7"
               style={{ textDecoration: "underline", margin: "auto" }}
             >
               Xem tất cả
-            </Typography>
+            </Typography> */}
+            <KeyboardArrowDownIcon
+              className="element"
+              fontSize="large"
+              style={{ margin: "auto" }}
+            ></KeyboardArrowDownIcon>
           </Box>
           <div class="col-12">
             <Box

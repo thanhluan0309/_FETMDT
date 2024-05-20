@@ -23,6 +23,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Unstable_Grid2";
 import ChatIcon from "@mui/icons-material/Chat";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -30,13 +31,17 @@ import {
   mockdataProduct as data,
   MockDataIMG as dataIMG,
 } from "../../data/data";
-
+import Skeleton from "@mui/material/Skeleton";
 import { TitleProduct as TitleComponent } from "../../component/Styles/Title";
 import { PriceText, Discount } from "../../component/Styles/PriceText";
 import DiscountIcon from "@mui/icons-material/Discount";
 const Product = () => {
+  const [loading, setloading] = React.useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      setloading(false);
+    }, 5000);
   }, []);
 
   let nav = useNavigate();
@@ -243,13 +248,18 @@ const Product = () => {
         </div>
 
         <Box display={"flex"} p={4}>
-          <Typography
+          {/* <Typography
             fontStyle={"italic"}
             color={"blue"}
             style={{ textDecoration: "underline", margin: "auto" }}
           >
             Xem tất cả
-          </Typography>
+          </Typography> */}
+          <KeyboardArrowDownIcon
+            className="element"
+            fontSize="large"
+            style={{ margin: "auto" }}
+          ></KeyboardArrowDownIcon>
         </Box>
         <div class=" pt-1 pb-1  col-12">
           <Box display={"flex"} justifyContent={"space-between"}>
@@ -345,83 +355,72 @@ const Product = () => {
                         maxWidth: "269px",
                       }}
                     >
-                      <CardMedia
-                        component="img"
-                        alt="green iguana"
-                        height="140"
-                        image={item.image[0]}
-                        onClick={() => {
-                          nav(`/pDetails/${item.id}`);
-                        }}
-                      />
-                      <CardContent sx={{ padding: "8px" }}>
-                        <TitleComponent>{item.name}</TitleComponent>
-
-                        <Typography variant="body2" color="text.secondary">
-                          Đã bán: {item.sold}
-                        </Typography>
-
-                        <Button
-                          variant="body2"
-                          sx={{ padding: "0px" }}
-                          className="text-primary"
-                        >
-                          Lợi nhuận: {item.Profit} đ
-                        </Button>
-                        <Box
-                          display={"flex"}
-                          alignItems={"center"}
-                          justifyContent={"space-between"}
-                        >
-                          <PriceText>
-                            {item.price.toLocaleString("en-US")} đ
-                          </PriceText>
-                          <Box display={"flex"}>
-                            <Box
-                              display={"flex"}
-                              justifyContent={"space-between"}
-                              bgcolor={"darkorange"}
-                              borderRadius={"5px"}
-                            >
-                              <Discount>
-                                {" "}
-                                Giảm {item.discount}
-                                <DiscountIcon></DiscountIcon>
-                              </Discount>
+                      {loading ? (
+                        <>
+                          {" "}
+                          <Box>
+                            <Skeleton
+                              variant="rectangular"
+                              width={"100%"}
+                              height={"200px"}
+                            />
+                            <Box>
+                              <Skeleton />
+                              <Skeleton width="60%" />
                             </Box>
                           </Box>
-                        </Box>
-                      </CardContent>
-                      {/* <CardActions
-                        justifyContent="space-between"
-                        display="flex"
-                      >
-                        <Box display="flex">
-                          <Button size="small">
-                            <ThumbUpOffAltIcon></ThumbUpOffAltIcon>
-                          </Button>
-                          <Typography
-                            ml="-12px"
-                            display="flex"
-                            alignItems="center"
-                          >
-                            0
-                          </Typography>
-                        </Box>
+                        </>
+                      ) : (
+                        <>
+                          <CardMedia
+                            component="img"
+                            alt="green iguana"
+                            height="140"
+                            image={item.image[0]}
+                            onClick={() => {
+                              nav(`/pDetails/${item.id}`);
+                            }}
+                          />
+                          <CardContent sx={{ padding: "8px" }}>
+                            <TitleComponent>{item.name}</TitleComponent>
 
-                        <Box display="flex">
-                          <Button size="small">
-                            <ChatIcon></ChatIcon>
-                          </Button>
-                          <Typography
-                            ml="-12px"
-                            display="flex"
-                            alignItems="center"
-                          >
-                            0
-                          </Typography>
-                        </Box>
-                      </CardActions> */}
+                            <Typography variant="body2" color="text.secondary">
+                              Đã bán: {item.sold}
+                            </Typography>
+
+                            <Button
+                              variant="body2"
+                              sx={{ padding: "0px" }}
+                              className="text-primary"
+                            >
+                              Lợi nhuận: {item.Profit} đ
+                            </Button>
+                            <Box
+                              display={"flex"}
+                              alignItems={"center"}
+                              justifyContent={"space-between"}
+                            >
+                              <PriceText>
+                                {item.price.toLocaleString("en-US")} đ
+                              </PriceText>
+                              <Box display={"flex"}>
+                                <Box
+                                  display={"flex"}
+                                  justifyContent={"space-between"}
+                                  bgcolor={"darkorange"}
+                                  borderRadius={"5px"}
+                                >
+                                  <Discount>
+                                    {" "}
+                                    Giảm {item.discount}
+                                    <DiscountIcon></DiscountIcon>
+                                  </Discount>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </CardContent>
+                        </>
+                      )}
                     </Card>
                   </Grid>
                 ))}

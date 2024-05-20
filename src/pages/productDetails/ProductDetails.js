@@ -77,7 +77,10 @@ const ProductDetails = ({ sendDataToBase }) => {
           {/* <Navbar onOrderedQuant={orderedQuant} onReset={resetQuant} /> */}
           <section style={{ backgroundColor: "white" }} className="core">
             <Gallery IMAGES={stateProduct.image} THUMBS={stateProduct.image} />
-            <MobileGallery />
+            <MobileGallery
+              IMAGES={stateProduct.image}
+              THUMBS={stateProduct.image}
+            />
             <Description
               onQuant={quant}
               onAdd={addQuant}
