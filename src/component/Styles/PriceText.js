@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PriceText = styled.div`
   color: rgb(247 144 9 / 1);
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-weight: 700;
 `;
 export const Discount = styled.div`

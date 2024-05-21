@@ -28,6 +28,3 @@
   .productEle:hover {
     border-color: orange;
   }
-  .MuiDataGrid-cell {
-    height: 500px;
-  }

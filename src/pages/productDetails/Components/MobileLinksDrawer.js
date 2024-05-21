@@ -51,12 +51,17 @@ const MobileLinksDrawer = ({ onOpen, onHandleOpen }) => {
                 Khách hàng
               </button>
             </li>
-
             <li>
-              <button>Thành viên</button>
+              <button
+                onClick={() => {
+                  nav("/order");
+                }}
+              >
+                Giỏ hàng
+              </button>
             </li>
             <li>
-              <button>Đơn hàng</button>
+              <button>Thành viên</button>
             </li>
           </ul>
         </section>

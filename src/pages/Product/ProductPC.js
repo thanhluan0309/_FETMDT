@@ -248,13 +248,6 @@ const Product = () => {
         </div>
 
         <Box display={"flex"} p={4}>
-          {/* <Typography
-            fontStyle={"italic"}
-            color={"blue"}
-            style={{ textDecoration: "underline", margin: "auto" }}
-          >
-            Xem tất cả
-          </Typography> */}
           <KeyboardArrowDownIcon
             className="element"
             fontSize="large"
@@ -346,83 +339,89 @@ const Product = () => {
             >
               {data &&
                 data.map((item, index) => (
-                  <Grid sx={{ width: "300px" }} display={"flex"} key={index}>
-                    <Card
-                      style={{
-                        margin: "auto",
-                        cursor: "pointer",
-                        minWidth: "269px",
-                        maxWidth: "269px",
-                      }}
-                    >
-                      {loading ? (
-                        <>
-                          {" "}
-                          <Box>
-                            <Skeleton
-                              variant="rectangular"
-                              width={"100%"}
-                              height={"200px"}
+                  <>
+                    {loading ? (
+                      <Box sx={{ width: "300px" }} display={"grid"} key={index}>
+                        <Skeleton
+                          variant="rectangular"
+                          width={"100%"}
+                          height={"200px"}
+                        />
+                        <Box mt={2}>
+                          <Skeleton />
+                          <Skeleton width="60%" />
+                        </Box>
+                      </Box>
+                    ) : (
+                      <Grid
+                        sx={{ width: "300px" }}
+                        display={"flex"}
+                        key={index}
+                      >
+                        <Card
+                          style={{
+                            margin: "auto",
+                            cursor: "pointer",
+                            minWidth: "269px",
+                            maxWidth: "269px",
+                          }}
+                        >
+                          <Card>
+                            <CardMedia
+                              component="img"
+                              alt="green iguana"
+                              height="140"
+                              image={item.image[0]}
+                              onClick={() => {
+                                nav(`/pDetails/${item.id}`);
+                              }}
                             />
-                            <Box>
-                              <Skeleton />
-                              <Skeleton width="60%" />
-                            </Box>
-                          </Box>
-                        </>
-                      ) : (
-                        <>
-                          <CardMedia
-                            component="img"
-                            alt="green iguana"
-                            height="140"
-                            image={item.image[0]}
-                            onClick={() => {
-                              nav(`/pDetails/${item.id}`);
-                            }}
-                          />
-                          <CardContent sx={{ padding: "8px" }}>
-                            <TitleComponent>{item.name}</TitleComponent>
+                            <CardContent sx={{ padding: "8px" }}>
+                              <TitleComponent>{item.name}</TitleComponent>
 
-                            <Typography variant="body2" color="text.secondary">
-                              Đã bán: {item.sold}
-                            </Typography>
+                              <Typography
+                                variant="body2"
+                                color="text.secondary"
+                              >
+                                Đã bán: {item.sold}
+                              </Typography>
 
-                            <Button
-                              variant="body2"
-                              sx={{ padding: "0px" }}
-                              className="text-primary"
-                            >
-                              Lợi nhuận: {item.Profit} đ
-                            </Button>
-                            <Box
-                              display={"flex"}
-                              alignItems={"center"}
-                              justifyContent={"space-between"}
-                            >
-                              <PriceText>
-                                {item.price.toLocaleString("en-US")} đ
-                              </PriceText>
-                              <Box display={"flex"}>
-                                <Box
-                                  display={"flex"}
-                                  justifyContent={"space-between"}
-                                  bgcolor={"darkorange"}
-                                  borderRadius={"5px"}
-                                >
-                                  <Discount>
-                                    {" "}
-                                    Giảm {item.discount}
-                                    <DiscountIcon></DiscountIcon>
-                                  </Discount>
+                              <Button
+                                variant="body2"
+                                sx={{ padding: "0px" }}
+                                className="text-primary"
+                              >
+                                Lợi nhuận: {item.Profit} đ
+                              </Button>
+                              <Box
+                                display={"flex"}
+                                alignItems={"center"}
+                                justifyContent={"space-between"}
+                              >
+                                <PriceText>
+                                  {item.price.toLocaleString("en-US")} đ
+                                </PriceText>
+                                <Box display={"flex"}>
+                                  <Box
+                                    display={"flex"}
+                                    justifyContent={"space-between"}
+                                    bgcolor={"darkorange"}
+                                    borderRadius={"5px"}
+                                  >
+                                    <Discount>
+                                      {" "}
+                                      Giảm {item.discount}
+                                      <DiscountIcon></DiscountIcon>
+                                    </Discount>
+                                  </Box>
                                 </Box>
                               </Box>
-                            </Box>
-                          </CardContent>
-                        </>
-                      )}
-                    </Card>
-                  </Grid>
+                            </CardContent>
+                          </Card>
+                        </Card>
+                      </Grid>
+                    )}
+                  </>
                 ))}
             </Grid>
           </Box>

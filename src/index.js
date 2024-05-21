@@ -10,6 +10,8 @@ import { HashRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
 // Create a client
 const queryClient = new QueryClient();
 
@@ -19,7 +21,9 @@ root.render(
   <React.StrictMode>
     <Router>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <PrimeReactProvider>
+          <App />
+        </PrimeReactProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Router>

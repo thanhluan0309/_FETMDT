@@ -10,13 +10,13 @@ import PreviousIcon from "./Icons/PreviousIcon";
 
 const MobileGallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
   const initialImage = IMAGES[0];
-
+  console.log("itnut " + initialImage);
   const [currentMobileImage, setCurrentMobileImage] = useState(initialImage);
-  const [mobileImageIndex, setMobileImageIndex] = useState(1);
+  const [mobileImageIndex, setMobileImageIndex] = useState(0);
 
   const handleIncrement = () => {
     if (mobileImageIndex === IMAGES.length - 1) {
-      setCurrentMobileImage(IMAGES[0]);
+      setCurrentMobileImage(initialImage || IMAGES[0]);
       setMobileImageIndex(0);
     } else {
       setCurrentMobileImage(IMAGES[mobileImageIndex + 1]);
