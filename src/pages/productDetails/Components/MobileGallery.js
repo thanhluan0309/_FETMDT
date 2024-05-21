@@ -10,7 +10,7 @@ import PreviousIcon from "./Icons/PreviousIcon";
 
 const MobileGallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
   const initialImage = IMAGES[0];
-  console.log("itnut " + initialImage);
+
   const [currentMobileImage, setCurrentMobileImage] = useState(initialImage);
   const [mobileImageIndex, setMobileImageIndex] = useState(0);
 

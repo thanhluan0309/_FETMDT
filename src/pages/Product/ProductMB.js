@@ -408,7 +408,7 @@ const Product = () => {
                             alignItems={"center"}
                             justifyContent={"space-between"}
                           >
-                            <PriceText>
+                            <PriceText style={{ fontSize: ".7rem" }}>
                               {item.price.toLocaleString("en-US")} đ
                             </PriceText>
                             <Box display={"flex"}>
