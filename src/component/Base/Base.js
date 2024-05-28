@@ -2,6 +2,7 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import React from "react";
 import { useState } from "react";
+import { Box } from "@mui/material";
 import { Container } from "@mui/material";
 const Base = ({ children }) => {
   const [dataFromProduct, setDataFromProduct] = useState(null);
@@ -26,8 +27,7 @@ const Base = ({ children }) => {
           onOrderedQuant={dataFromProduct?.onOrderedQuant || 0}
           onReset={dataFromProduct?.onReset || null}
         ></Navbar>
-
-        {childrenWithProps}
+        <Box minHeight={"66vh"}> {childrenWithProps}</Box>
 
         <Footer></Footer>
       </div>

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid/";
+
+import { DataGrid } from "@mui/x-data-grid";
 import { GridToolbar } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -13,10 +14,16 @@ import { useMediaQuery } from "@mui/material";
 import { Columns as columns, Rows as rows } from "./components/components";
 import { SimpleDialog } from "./components/components";
 import { styled } from "@mui/system";
+import ErrorIcon from "@mui/icons-material/Error";
 import { mockdataProduct } from "../../data/data";
 const OrderPC = ({ stateCustomer }) => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState("");
+  const [selectModel, setSelectModel] = React.useState([]);
+  const [error, setError] = React.useState({
+    handleErrorChoose: false,
+    handleErrorProduct: false,
+  });
   const isMobile = useMediaQuery("(max-width:600px)");
 
   // Điều chỉnh các cột cho thiết bị di động
@@ -27,21 +34,38 @@ const OrderPC = ({ stateCustomer }) => {
   }));
   const handleClickOpen = () => {
     setOpen(true);
+    setError({ ...error, handleErrorChoose: false });
   };
-
   const handleClose = (value) => {
     setOpen(false);
     setSelectedValue(value);
   };
+
+  const handleSelectionModelChange = (newSelectionModel) => {
+    setError({ ...error, handleErrorProduct: false });
+    setSelectModel(newSelectionModel);
+  };
+  const handleBuy = () => {
+    if (selectModel.length === 0 && !selectedValue) {
+      setError({ ...error, handleErrorProduct: true, handleErrorChoose: true });
+    } else {
+      if (selectModel.length === 0) {
+        setError({ ...error, handleErrorProduct: true });
+      }
+      if (!selectedValue) {
+        setError({ ...error, handleErrorChoose: true });
+      }
+    }
+  };
   return (
     <>
       <Box className="hide-in-mobile" pl={2} pr={2}>
-        <Box>
+        {/* <Box>
           <Typography mt={3} mb={3} variant="h5" fontWeight={600}>
             Quản lý giỏ hàng
           </Typography>
-        </Box>
-        <Box mb={3}>
+        </Box> */}
+        <Box mt={3} mb={3}>
           <table style={{ width: "100%" }}>
             <thead>
               <tr
@@ -49,6 +73,9 @@ const OrderPC = ({ stateCustomer }) => {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
+                  fontWeight: "200",
+                  color: "#34b534",
+                  fontSize: "1.5rem",
                 }}
               >
                 <th>Số lượng mặt hàng : 3</th>
@@ -63,6 +90,7 @@ const OrderPC = ({ stateCustomer }) => {
                   <Button
                     size="large"
                     sx={{ color: "white", fontWeight: "700" }}
+                    onClick={handleBuy}
                   >
                     Mua hàng
                   </Button>
@@ -102,6 +130,19 @@ const OrderPC = ({ stateCustomer }) => {
                 {selectedValue
                   ? `   Đã chọn : ${selectedValue}`
                   : "* Vui lòng chọn mục khách hàng"}
+                <br></br>
+                {error.handleErrorChoose ? (
+                  <Typography
+                    display={"flex"}
+                    alignItems={"center"}
+                    color={"error"}
+                  >
+                    <ErrorIcon></ErrorIcon>
+                    Chưa có khách hàng
+                  </Typography>
+                ) : (
+                  ""
+                )}
               </Typography>
 
               <SimpleDialog
@@ -124,13 +165,14 @@ const OrderPC = ({ stateCustomer }) => {
                 {" "}
                 Phương thức thanh toán
               </FormLabel>
+
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="Thanh toán khi nhận hàng"
+                defaultValue="offline"
                 name="radio-buttons-group"
               >
                 <FormControlLabel
-                  value="NH"
+                  value="offline"
                   control={<Radio />}
                   label="Thanh toán khi nhận hàng"
                 />
@@ -155,7 +197,7 @@ const OrderPC = ({ stateCustomer }) => {
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="Thanh toán khi nhận hàng"
+                defaultValue="KH"
                 name="radio-buttons-group"
               >
                 <FormControlLabel
@@ -174,6 +216,14 @@ const OrderPC = ({ stateCustomer }) => {
         </Box>
         <Box minHeight={"1000px"} width={"100%"}>
           {" "}
+          {error.handleErrorProduct ? (
+            <Typography display={"flex"} alignItems={"center"} color={"error"}>
+              <ErrorIcon></ErrorIcon>
+              Chưa chọn bất kì sản phẩm nào
+            </Typography>
+          ) : (
+            ""
+          )}
           <div style={{ height: 800, overflow: "scroll", width: "100%" }}>
             <DataGrid
               rows={mockdataProduct}
@@ -181,10 +231,12 @@ const OrderPC = ({ stateCustomer }) => {
               components={{
                 Toolbar: GridToolbar,
               }}
-              rowHeight={isMobile ? 100 : 150} // Giảm chiều cao hàng trên mobile
+              rowSelectionModel={selectModel}
+              onRowSelectionModelChange={handleSelectionModelChange}
+              rowHeight={isMobile ? 100 : 150}
               checkboxSelection
-              autoHeight={isMobile} // Tự động chiều cao trên mobile
-              hideFooter={isMobile} // Ẩn footer trên mobile
+              autoHeight={isMobile}
+              hideFooter={isMobile}
             />
           </div>
         </Box>

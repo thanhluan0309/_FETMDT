@@ -341,7 +341,15 @@ const Product = () => {
                 data.map((item, index) => (
                   <>
                     {loading ? (
-                      <Box sx={{ width: "300px" }} display={"grid"} key={index}>
+                      <Box
+                        sx={{
+                          width: "300px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                        display={"grid"}
+                        key={index}
+                      >
                         <Skeleton
                           variant="rectangular"
                           width={"100%"}

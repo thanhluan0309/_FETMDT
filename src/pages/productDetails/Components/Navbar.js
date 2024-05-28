@@ -80,8 +80,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               <li>
                 <button
                   onClick={() => {
-                    console.log("re");
-                    nav("/order");
+                    nav("/cart");
                   }}
                 >
                   Giỏ hàng
@@ -90,10 +89,10 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               <li>
                 <button
                   onClick={() => {
-                    nav("/customer");
+                    nav("/order");
                   }}
                 >
-                  Thành viên
+                  Đơn hàng
                 </button>
               </li>
             </ul>

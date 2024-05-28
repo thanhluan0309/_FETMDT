@@ -2,7 +2,8 @@ import Navbar from "../../component/Navbar/navbar";
 
 import Footer from "../../component/Footer/footer";
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+
 import { useTheme } from "@mui/material/styles";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -14,11 +15,21 @@ import Gallery from "./Components/Gallery";
 import Description from "./Components/Description";
 import MobileGallery from "./Components/MobileGallery";
 import { mockdataProduct } from "../../data/data";
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const ProductDetails = ({ sendDataToBase }) => {
   const [stateProduct, setStateproduct] = React.useState({});
   const { productid } = useParams();
   const [quant, setQuant] = React.useState(0);
   const [orderedQuant, setOrderedQuant] = React.useState(0);
+  let { id } = useParams();
+  let query = useQuery();
+  let utmSource = query.get("utm_source");
+  let utmCampaign = query.get("utm_campaign");
+  let utmContent = query.get("utm_content");
   useEffect(() => {
     // Giả sử chúng ta có một số dữ liệu cần gửi lên Base
     let getonOrderedQuant = orderedQuant || 0;
@@ -69,6 +80,13 @@ const ProductDetails = ({ sendDataToBase }) => {
   return (
     <>
       <main className="App">
+        {/* <div>
+          <h1>Item Page</h1>
+          <p>ID: {id}</p>
+          <p>UTM Source: {utmSource}</p>
+          <p>UTM Campaign: {utmCampaign}</p>
+          <p>UTM Content: {utmContent}</p>
+        </div> */}
         <Container
           style={{ backgroundColor: "white", padding: "0px" }}
           component="section"

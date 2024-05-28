@@ -217,7 +217,6 @@ function ProductTTCell(params) {
     <>
       <ButtonGroup variant="contained" aria-label="Basic button group">
         <Button color="error">Xoá</Button>
-        <Button color="warning">Điều Chỉnh</Button>
       </ButtonGroup>
     </>
   );

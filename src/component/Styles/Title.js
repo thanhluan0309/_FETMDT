@@ -6,7 +6,7 @@ export const TitleProduct = styled.div`
   font-weight: 700;
   color: #595959;
   color: rgb(57 62 64 / 1);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 2.334;
   letter-spacing: 0em;
   white-space: nowrap;

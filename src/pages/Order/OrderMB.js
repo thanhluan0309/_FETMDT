@@ -21,7 +21,7 @@ import Avatar from "@mui/material/Avatar";
 import { PickList } from "primereact/picklist";
 import { mockdataProduct } from "../../data/data";
 import { InputNumber } from "primereact/inputnumber";
-
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 const OrderMB = ({ stateCustomer }) => {
   const [value1, setValue1] = React.useState(20);
   const [open, setOpen] = React.useState(false);
@@ -64,6 +64,10 @@ const OrderMB = ({ stateCustomer }) => {
               <img src={stateProduct.image[0]} width={50} height={50}></img>
             </ListItemAvatar>
             <ListItemText
+              sx={{
+                minWidth: "150px",
+                maxWidth: "150px",
+              }}
               primary={stateProduct.name}
               secondary={
                 <React.Fragment>
@@ -86,10 +90,16 @@ const OrderMB = ({ stateCustomer }) => {
                 </React.Fragment>
               }
             />
+            <ListItemText display={"flex"} alignItems="center">
+              <Button
+                variant="outlined"
+                color="error"
+                style={{ margin: "auto" }}
+              >
+                <DeleteForeverIcon></DeleteForeverIcon>
+              </Button>
+            </ListItemText>
           </Box>
-          <ListItemText>
-            <Button>Xoá</Button>
-          </ListItemText>
         </Box>
       </ListItem>
     );
@@ -106,13 +116,18 @@ const OrderMB = ({ stateCustomer }) => {
         ))}
     </Box>
   );
+  const SpanLable = ({ content, fontSize, fontWeight }) => {
+    return (
+      <Typography fontWeight={fontWeight || 500} fontSize={fontSize || ".9rem"}>
+        {content}
+      </Typography>
+    );
+  };
   return (
     <>
       <Box className="hide-in-desktop">
         <Box mt={3} mb={3}>
-          <Typography variant="h7" fontWeight={700}>
-            Quản lý giỏ hàng
-          </Typography>
+          <Typography fontWeight={700}>Quản lý giỏ hàng</Typography>
         </Box>
         <Box
           display={"flex"}
@@ -151,19 +166,25 @@ const OrderMB = ({ stateCustomer }) => {
           <Box gridColumn="span 5" gridRow="span 2">
             <Box>
               <Typography
-                variant="inherit"
-                sx={{ color: "black", fontWeight: "600" }}
+                sx={{ color: "black", fontWeight: "600", fontSize: "1rem" }}
               >
                 Danh sách khách hàng
               </Typography>
 
-              <Button variant="outlined" onClick={handleClickOpen}>
+              <Button
+                sx={{ fontSize: ".9rem" }}
+                variant="outlined"
+                onClick={handleClickOpen}
+              >
                 Chọn khách hàng
               </Button>
 
               <Typography
                 variant="subtitle1"
-                sx={{ color: `${selectedValue ? "green" : "grey"}` }}
+                sx={{
+                  fontSize: ".9rem",
+                  color: `${selectedValue ? "green" : "grey"}`,
+                }}
                 component="div"
               >
                 {selectedValue
@@ -198,12 +219,18 @@ const OrderMB = ({ stateCustomer }) => {
                 <FormControlLabel
                   value="NH"
                   control={<Radio />}
-                  label="Thanh toán khi nhận hàng"
+                  label={
+                    <SpanLable content={"Thanh toán khi nhận hàng"}></SpanLable>
+                  }
                 />
                 <FormControlLabel
                   value="online"
                   control={<Radio />}
-                  label="Thanh toán bằng chuyển khoản"
+                  label={
+                    <SpanLable
+                      content={"Thanh toán bằng chuyển khoản"}
+                    ></SpanLable>
+                  }
                 />
               </RadioGroup>
             </FormControl>
@@ -226,12 +253,14 @@ const OrderMB = ({ stateCustomer }) => {
                 <FormControlLabel
                   value="KH"
                   control={<Radio />}
-                  label="Khách hàng chịu phí"
+                  label={
+                    <SpanLable content={"Khách hàng chịu phí"}></SpanLable>
+                  }
                 />
                 <FormControlLabel
                   value="DL"
                   control={<Radio />}
-                  label="Người bán chịu phí"
+                  label={<SpanLable content={"Người bán chịu phí"}></SpanLable>}
                 />
               </RadioGroup>
             </FormControl>
@@ -240,7 +269,13 @@ const OrderMB = ({ stateCustomer }) => {
         <Box minHeight={"1000px"} width={"100%"}>
           <div>
             <FormControlLabel
-              label="Chọn tất cả sản phẩm"
+              label={
+                <SpanLable
+                  content={"Chọn tất cả sản phẩm"}
+                  fontSize={"1rem"}
+                  fontWeight={700}
+                ></SpanLable>
+              }
               control={
                 <Checkbox
                   checked={checked[0] && checked[1]}
