@@ -54,7 +54,7 @@ const MobileLinksDrawer = ({ onOpen, onHandleOpen }) => {
             <li>
               <button
                 onClick={() => {
-                  nav("/order");
+                  nav("/cart");
                 }}
               >
                 Giỏ hàng
