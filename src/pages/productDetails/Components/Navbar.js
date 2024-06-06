@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import menu from "../Pictures/icon-menu.svg";
-import logo from "../Pictures/logo.svg";
-import avatar from "../Pictures/image-avatar.png";
+
 import { Badge, IconButton } from "@mui/material";
 import Cart from "./Cart";
 import MobileLinksDrawer from "./MobileLinksDrawer";
@@ -34,7 +33,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
 
   return (
     <header className={`sticky-header ${isScrolled ? "scrolled" : ""}`}>
-      <nav style={{ paddingLeft: "10%", paddingRight: "10%" }}>
+      <nav style={{ paddingLeft: "5%", paddingRight: "5%" }}>
         <section className="left">
           <div className="imgs">
             <img
@@ -46,9 +45,10 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               }}
             />
             <MobileLinksDrawer onHandleOpen={handleOpen} onOpen={open} />
+
             <img
               src={
-                "https://mlfqgcfasixj.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://samurai.com.vn/wp-content/uploads/2024/04/cropped-Thiet-ke-chua-co-ten-17.png"
+                "https://res.cloudinary.com/dhscgjuis/image/upload/v1717129388/Music/lofqe7nyt4vzsbugdfi3.jpg"
               }
               alt="logo"
               width={"100"}
@@ -128,13 +128,42 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               </svg>
             </Badge>
           </IconButton>
-          <img
-            src={
-              "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
-            }
-            alt="img-avatar"
-            className="avatar"
-          />
+
+          <div class="btn-group">
+            <img
+              src={
+                "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
+              }
+              alt="img-avatar"
+              className="avatar"
+              id="triggerId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            />
+            <div
+              class="dropdown-menu dropdown-menu-start"
+              aria-labelledby="triggerId"
+            >
+              <a class="dropdown-item" href="#">
+                Nâng cấp tài khoản
+              </a>
+              <a class="dropdown-item disabled" href="#">
+                Tài khoản seller A
+              </a>
+
+              <div class="dropdown-divider"></div>
+              <a
+                class="dropdown-item"
+                onClick={() => {
+                  localStorage.clear();
+                  nav("/login");
+                }}
+              >
+                Đăng xuất
+              </a>
+            </div>
+          </div>
           {showCart && (
             <Cart
               onOrderedQuant={onOrderedQuant}

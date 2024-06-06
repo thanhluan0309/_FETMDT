@@ -1,8 +1,9 @@
 import axios from "axios";
-import { URL_BACKEND } from "../environment/environment";
+import { URL_BACKEND } from "../../contanst/contanst";
 // Tạo instance Axios
 const api = axios.create({
   baseURL: `${URL_BACKEND}`, // Đặt base URL cho tất cả các yêu cầu
+  withCredentials: true,
 });
 
 // Interceptor để thêm authorization header
@@ -22,10 +23,10 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    console.log("BÈ");
+
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      console.log("AF");
+
       // Gọi API làm mới token
       const refreshToken = localStorage.getItem("refreshToken");
       if (refreshToken) {

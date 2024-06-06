@@ -1,8 +1,9 @@
 import Axios from "axios";
+import api from "../common/apis";
 import { URL_BACKEND } from "../../utils/contanst/contanst";
 export const HandleLogin = async (req) => {
   try {
-    const res = await Axios.post(
+    const res = await api.post(
       `${URL_BACKEND}/auth/login`,
       {
         email: req.email,
@@ -33,7 +34,7 @@ export const HandleLogin = async (req) => {
 
 export const getAllUser = async (req) => {
   try {
-    const res = await Axios.get(
+    const res = await api.get(
       `https://tmdt3.vercel.app/Auth/getAll`,
 
       {
@@ -62,9 +63,8 @@ export const getAllUser = async (req) => {
 };
 
 export const HandleRegister = async (req) => {
-  console.log("check req " + JSON.stringify(req));
   try {
-    const res = await Axios.post(
+    const res = await api.post(
       `${URL_BACKEND}/auth/register`,
       {
         name: req.name,

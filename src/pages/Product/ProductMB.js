@@ -36,7 +36,7 @@ import "./App.css";
 import { TitleProduct as TitleComponent } from "../../component/Styles/Title";
 import { PriceText, Discount } from "../../component/Styles/PriceText";
 import DiscountIcon from "@mui/icons-material/Discount";
-const Product = () => {
+const Product = ({ stateProduct = [], Isloading = false }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -212,12 +212,12 @@ const Product = () => {
         pb={5}
         sx={{ width: "100%", height: "100%" }}
       >
-        <div className="col-12 ">
+        {/* <div className="col-12 ">
           <img
             className="bgtitle"
             src="https://img.pikbest.com/png-images/20211011/startup-managers-presenting-and-analyzing-sales-growth-chart_6143677.png!bw700"
           ></img>
-        </div>
+        </div> */}
         <Box
           sx={{
             width: "100%",
@@ -226,7 +226,7 @@ const Product = () => {
             paddingRight: "5px",
           }}
         >
-          <div class="col-12 mb-2">
+          <div style={{ marginTop: "2rem" }} class="col-12 mb-2">
             <Box display={"flex"} justifyContent={"space-between"}>
               <Typography variant="h7" fontWeight={700}>
                 Các nhãn hàng
@@ -256,7 +256,7 @@ const Product = () => {
               ))}
           </div>
 
-          <Box display={"flex"} p={3}>
+          <Box display={"flex"} p={1}>
             {/* <Typography
               fontStyle={"italic"}
               color={"blue"}
@@ -361,8 +361,8 @@ const Product = () => {
             </Typography>
             <Box sx={{ flexGrow: 1 }}>
               <Grid display={"flex"} justifyContent={"space-between"} container>
-                {data &&
-                  data.map((item, index) => (
+                {stateProduct &&
+                  stateProduct.map((item, index) => (
                     <Grid
                       mt={2}
                       sx={{ width: "49%" }}
@@ -384,7 +384,7 @@ const Product = () => {
                           component="img"
                           alt="green iguana"
                           height="140"
-                          image={item.image[0]}
+                          image={item.images[0].path}
                           onClick={() => {
                             nav(`/pDetails/${item.id}`);
                           }}
@@ -409,7 +409,8 @@ const Product = () => {
                             justifyContent={"space-between"}
                           >
                             <PriceText style={{ fontSize: ".7rem" }}>
-                              {item.price.toLocaleString("en-US")} đ
+                              {item.price_for_customer.toLocaleString("en-US")}{" "}
+                              đ
                             </PriceText>
                             <Box display={"flex"}>
                               <Box

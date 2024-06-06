@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import BACKGROUNDTOP from "../../assets/image/bg-login.png";
 export const BoxContainer = styled.div`
   width: 100%;
   display: flex;
@@ -7,7 +7,17 @@ export const BoxContainer = styled.div`
   align-items: center;
   margin-top: 10px;
 `;
+export const Container = styled.div`
+  background-image: url(${BACKGROUNDTOP});
 
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-position: bottom;
+
+  height: 204px;
+  width: 100%;
+`;
 export const FormContainer = styled.form`
   width: 100%;
   display: flex;

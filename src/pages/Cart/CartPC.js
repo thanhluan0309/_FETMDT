@@ -16,7 +16,7 @@ import { SimpleDialog } from "./components/components";
 import { styled } from "@mui/system";
 import ErrorIcon from "@mui/icons-material/Error";
 import { mockdataProduct } from "../../data/data";
-const OrderPC = ({ stateCustomer }) => {
+const CartPC = ({ stateCustomer }) => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState("");
   const [selectModel, setSelectModel] = React.useState([]);
@@ -245,4 +245,4 @@ const OrderPC = ({ stateCustomer }) => {
   );
 };
 
-export default OrderPC;
+export default CartPC;
