@@ -48,14 +48,8 @@ export const AppContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 export const FormBase = ({ children }) => {
   return (
@@ -64,12 +58,11 @@ export const FormBase = ({ children }) => {
         sx={{
           width: "480px",
           maxWidth: "1320px",
-          height: "100%",
+          height: "110%",
           backgroundColor: "white",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          // backgroundColor: "blueviolet",
         }}
       >
         {children}
@@ -87,6 +80,7 @@ export const FooterBase = ({ children }) => {
   return (
     <>
       <Box
+        // className="AddpadingLeft"
         sx={{
           paddingLeft: "2rem",
           paddingTop: "1rem",
@@ -120,6 +114,7 @@ const ContainerAuth = styled.div`
 `;
 const ContainerHeader = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -142,9 +137,10 @@ export const HeaderAuth = ({ children }) => {
               }}
               sx={{
                 position: "absolute",
-                left: "47rem",
+                left: "0%",
                 cursor: "pointer",
                 width: 48,
+                transform: "translate(66%, 14%)",
                 backgroundColor: "#efefef",
                 height: 48,
               }}

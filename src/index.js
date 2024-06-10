@@ -12,6 +12,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import CSS
+
 // Create a client
 const queryClient = new QueryClient();
 

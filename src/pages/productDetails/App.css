@@ -49,6 +49,10 @@ button {
   .hide-in-mobile {
     display: none;
   }
+  .PaddingLRForNav {
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+  }
 }
 
 ul {

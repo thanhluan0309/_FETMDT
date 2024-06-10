@@ -6,6 +6,16 @@ import { Box } from "@mui/material";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { FormBase } from "../component";
+import styled from "styled-components";
+import FooterNav from "../FooterNav/FooterNav";
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%; /* Đảm bảo chiếm toàn bộ chiều cao màn hình */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const Base = ({ children }) => {
   let Nav = useNavigate();
   const [dataFromProduct, setDataFromProduct] = useState(null);
@@ -35,45 +45,50 @@ const Base = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      return Nav("/login");
-    } else {
-      const intervalId = setInterval(() => {
-        // Gọi hàm bạn muốn thực hiện sau mỗi 5 giây ở đây
-        // Sử dụng
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //     return Nav("/login");
+  //   } else {
+  //     const intervalId = setInterval(() => {
+  //       // Gọi hàm bạn muốn thực hiện sau mỗi 5 giây ở đây
+  //       // Sử dụng
 
-        const storedToken = localStorage.getItem("token");
-        const isExpired = isTokenExpired(storedToken);
+  //       const storedToken = localStorage.getItem("token");
+  //       const isExpired = isTokenExpired(storedToken);
 
-        if (isExpired) {
-          localStorage.clear();
-          Nav("/login");
-        }
-      }, 5000);
+  //       if (isExpired) {
+  //         localStorage.clear();
+  //         Nav("/login");
+  //       }
+  //     }, 5000);
 
-      // Cleanup function để clear interval khi component unmount
-      return () => clearInterval(intervalId);
-    }
-  }, []);
+  //     // Cleanup function để clear interval khi component unmount
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, []);
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "white",
-          paddingBottom: "50px",
-          padding: "0px",
-        }}
-        className="container"
-      >
-        <Navbar
-          onOrderedQuant={dataFromProduct?.onOrderedQuant || 0}
-          onReset={dataFromProduct?.onReset || null}
-        ></Navbar>
-        <Box minHeight={"66vh"}>{childrenWithProps}</Box>
+      <AppContainer>
+        <Box
+          sx={{
+            width: "480px",
+            maxWidth: "1320px",
+            height: "110%",
+            backgroundColor: "white",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Navbar
+            onOrderedQuant={dataFromProduct?.onOrderedQuant || 0}
+            onReset={dataFromProduct?.onReset || null}
+          ></Navbar>
+          <Box sx={{ backgroundColor: "white" }}>{childrenWithProps}</Box>
 
-        <Footer></Footer>
-      </div>
+          <FooterNav></FooterNav>
+        </Box>
+      </AppContainer>
     </>
   );
 };

@@ -93,7 +93,7 @@ const SignupForm = (props) => {
     <>
       <AppContainer>
         <FormBase>
-          <Box>
+          <Box sx={{ paddingBottom: "2.5rem" }}>
             <HeaderAuth></HeaderAuth>
             <Box
               mt={2}

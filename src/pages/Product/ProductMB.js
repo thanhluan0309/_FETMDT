@@ -36,6 +36,7 @@ import "./App.css";
 import { TitleProduct as TitleComponent } from "../../component/Styles/Title";
 import { PriceText, Discount } from "../../component/Styles/PriceText";
 import DiscountIcon from "@mui/icons-material/Discount";
+import Cookies from "js-cookie";
 const Product = ({ stateProduct = [], Isloading = false }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -208,36 +209,38 @@ const Product = ({ stateProduct = [], Isloading = false }) => {
   return (
     <>
       <Box
-        className="hide-in-desktop"
+        // className="hide-in-desktop"
         pb={5}
         sx={{ width: "100%", height: "100%" }}
       >
-        {/* <div className="col-12 ">
+        <div className="col-12 ">
           <img
             className="bgtitle"
             src="https://img.pikbest.com/png-images/20211011/startup-managers-presenting-and-analyzing-sales-growth-chart_6143677.png!bw700"
           ></img>
-        </div> */}
+        </div>
         <Box
+          className="AddpadingLeftProduct"
           sx={{
             width: "100%",
             height: "100%",
             paddingLeft: "5px",
             paddingRight: "5px",
+            backgroundColor: "white",
           }}
         >
-          <div style={{ marginTop: "2rem" }} class="col-12 mb-2">
+          {/* <div style={{ marginTop: "2rem" }} class="col-12 mb-2">
             <Box display={"flex"} justifyContent={"space-between"}>
               <Typography variant="h7" fontWeight={700}>
                 Các nhãn hàng
               </Typography>
             </Box>
-          </div>
+          </div> */}
           <div
             style={{
               overflowY: "scroll",
               display: "flex",
-              height: "200px",
+              height: "100px",
               width: "100%",
               flexWrap: "wrap",
               justifyContent: "space-between",
@@ -383,7 +386,7 @@ const Product = ({ stateProduct = [], Isloading = false }) => {
                         <CardMedia
                           component="img"
                           alt="green iguana"
-                          height="140"
+                          sx={{ height: "140px" }}
                           image={item.images[0].path}
                           onClick={() => {
                             nav(`/pDetails/${item.id}`);

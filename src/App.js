@@ -15,6 +15,7 @@ import Customer from "./pages/Customers/Customers";
 import Base from "./component/Base/Base";
 import Cart from "./pages/Cart/Cart";
 import Order from "./pages/Order/Order";
+import CustomerDetails from "./pages/CustomerDetails/CustomerDetails";
 function App() {
   return (
     <Routes>
@@ -51,6 +52,14 @@ function App() {
         element={
           <Base>
             <ProductDetails></ProductDetails>
+          </Base>
+        }
+      ></Route>
+      <Route
+        path="/cDetails/:customerid"
+        element={
+          <Base>
+            <CustomerDetails></CustomerDetails>
           </Base>
         }
       ></Route>

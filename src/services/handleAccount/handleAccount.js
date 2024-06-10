@@ -1,10 +1,9 @@
 import Axios from "axios";
 import api from "../common/apis";
-import { URL_BACKEND } from "../../utils/contanst/contanst";
 export const HandleLogin = async (req) => {
   try {
     const res = await api.post(
-      `${URL_BACKEND}/auth/login`,
+      `/auth/login`,
       {
         email: req.email,
         password: req.password,
@@ -65,7 +64,7 @@ export const getAllUser = async (req) => {
 export const HandleRegister = async (req) => {
   try {
     const res = await api.post(
-      `${URL_BACKEND}/auth/register`,
+      `/auth/register`,
       {
         name: req.name,
         phone: req.phone,

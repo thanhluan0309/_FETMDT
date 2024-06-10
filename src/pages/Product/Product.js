@@ -24,10 +24,10 @@ const Product = () => {
     .filter((item) => item.destroy === 0);
   return (
     <>
-      <ProductPC
+      {/* <ProductPC
         stateProduct={newArrayFillterDetroy || []}
         Isloading={DataAllProduct.isLoading}
-      ></ProductPC>
+      ></ProductPC> */}
       <ProductMB
         stateProduct={newArrayFillterDetroy || []}
         Isloading={DataAllProduct.isLoading}
