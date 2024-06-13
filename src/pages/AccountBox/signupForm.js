@@ -93,7 +93,7 @@ const SignupForm = (props) => {
     <>
       <AppContainer>
         <FormBase>
-          <Box sx={{ paddingBottom: "2.5rem" }}>
+          <Box sx={{ height: "91vh" }}>
             <HeaderAuth></HeaderAuth>
             <Box
               mt={2}
@@ -130,13 +130,13 @@ const SignupForm = (props) => {
                     onChange={onChange}
                     style={{ height: "48px", fontSize: ".9rem" }}
                     className="form-control"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Họ và Tên"
                   />
                   {errorRequired.name && (
                     <ErrorMessage>* {errorRequired.name}</ErrorMessage>
                   )}
                 </Box>
-                <Box style={{ marginTop: "1.5rem" }} className="form-group">
+                <Box style={{ marginTop: "1rem" }} className="form-group">
                   <label htmlFor="phone" className="form-label">
                     Số điện thoại
                   </label>
@@ -148,7 +148,7 @@ const SignupForm = (props) => {
                     onChange={onChange}
                     style={{ height: "48px", fontSize: ".9rem" }}
                     className="form-control"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Số điện thoại"
                   />
                   {errorRequired.phone && (
                     <ErrorMessage>* {errorRequired.phone}</ErrorMessage>
@@ -157,7 +157,7 @@ const SignupForm = (props) => {
                     <ErrorMessage>* {stateError?.phone?.msg}</ErrorMessage>
                   )}
                 </Box>
-                <Box style={{ marginTop: "1.5rem" }} className="form-group">
+                <Box style={{ marginTop: "1rem" }} className="form-group">
                   <label htmlFor="email" className="form-label">
                     Email
                   </label>
@@ -169,7 +169,7 @@ const SignupForm = (props) => {
                     onChange={onChange}
                     style={{ height: "48px", fontSize: ".9rem" }}
                     className="form-control"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Địa chỉ Email"
                   />
                   {errorRequired.email && (
                     <ErrorMessage>* {errorRequired.email}</ErrorMessage>
@@ -178,7 +178,7 @@ const SignupForm = (props) => {
                     <ErrorMessage>* {stateError?.email?.msg}</ErrorMessage>
                   )}
                 </Box>
-                <Box style={{ marginTop: "1.5rem" }} className="form-group">
+                <Box style={{ marginTop: "1rem" }} className="form-group">
                   <label htmlFor="password" className="form-label">
                     Mật khẩu
                   </label>
@@ -190,7 +190,7 @@ const SignupForm = (props) => {
                     onChange={onChange}
                     style={{ height: "48px", fontSize: ".9rem" }}
                     className="form-control"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Mật khẩu"
                   />
                   {errorRequired.password && (
                     <ErrorMessage>* {errorRequired.password}</ErrorMessage>
@@ -199,7 +199,7 @@ const SignupForm = (props) => {
                     <ErrorMessage>* {stateError?.password?.msg}</ErrorMessage>
                   )}
                 </Box>
-                <Box style={{ marginTop: "1.5rem" }} className="form-group">
+                <Box style={{ marginTop: "1rem" }} className="form-group">
                   <label htmlFor="password" className="form-label">
                     Xác nhận lại mật khẩu
                   </label>
@@ -211,7 +211,7 @@ const SignupForm = (props) => {
                     onChange={onChange}
                     style={{ height: "48px", fontSize: ".9rem" }}
                     className="form-control"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Xác nhận lại mật khẩu"
                   />
                   {errorRequired.confirm_password && (
                     <ErrorMessage>

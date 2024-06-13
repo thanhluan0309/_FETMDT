@@ -404,7 +404,14 @@ const Product = ({ stateProduct = [], Isloading = false }) => {
                             sx={{ padding: "0px" }}
                             className="text-primary"
                           >
-                            Lợi nhuận: {item.Profit} đ
+                            Lợi nhuận:{" "}
+                            {(
+                              ((parseInt(item.price_for_customer) -
+                                parseInt(item.profit)) *
+                                parseInt(item.discount_for_seller)) /
+                              100
+                            ).toLocaleString("en-US")}
+                            đ
                           </Button>
                           <Box
                             display={"flex"}
@@ -424,7 +431,7 @@ const Product = ({ stateProduct = [], Isloading = false }) => {
                               >
                                 <DiscountMB>
                                   {" "}
-                                  Giảm {item.discount}
+                                  Giảm {item.sales}
                                   <DiscountIcon fontSize="small"></DiscountIcon>
                                 </DiscountMB>
                               </Box>

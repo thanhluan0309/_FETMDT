@@ -21,7 +21,7 @@ const Product = () => {
         id: item._id,
       };
     })
-    .filter((item) => item.destroy === 0);
+    .filter((item) => item.destroy === 0 && item.status === 2);
   return (
     <>
       {/* <ProductPC

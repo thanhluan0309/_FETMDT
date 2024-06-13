@@ -196,7 +196,7 @@ const Customer = () => {
   };
   return (
     <>
-      <Box minHeight={"100vh"}>
+      <Box className="PaddingLRForCustomer" minHeight={"100vh"}>
         {getAll_Customer.isLoading ? (
           <Typography>Đang tải dử liệu....</Typography>
         ) : (

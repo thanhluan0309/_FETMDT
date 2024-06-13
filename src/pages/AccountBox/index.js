@@ -13,13 +13,14 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { HandleLogin } from "../../services/handleAccount/handleAccount";
-import { data } from "autoprefixer";
+import CircularProgress from "@mui/material/CircularProgress";
 const AccountBox = (props) => {
   let nav = useNavigate();
   const [FormLogin, setFormLogin] = useState({
     email: "",
     password: "",
   });
+  const [isLoading, setIsloading] = useState(false);
   const [DataError, setDataError] = useState({});
   const MutationLogin = useMutation({
     mutationFn: (body) => {
@@ -34,14 +35,20 @@ const AccountBox = (props) => {
   };
 
   const sLogin = () => {
+    setIsloading(true);
     MutationLogin.mutate(FormLogin, {
       onSuccess: (data) => {
         if (data?.errors) {
           setDataError(data);
+          setIsloading(false);
         } else {
           localStorage.setItem("token", data.data.data.access_token);
           nav("/product");
         }
+      },
+      onError: (err) => {
+        console.log("lỗi " + err);
+        setIsloading(false);
       },
     });
   };
@@ -145,7 +152,16 @@ const AccountBox = (props) => {
                 </Typography>
               </Box>
               <Box mt={2} display={"flex"} justifyContent={"end"}>
-                <ButtonSignIn onClick={sLogin}>Đăng nhập</ButtonSignIn>
+                {isLoading ? (
+                  <ButtonSignIn disabled={isLoading}>
+                    {" "}
+                    <CircularProgress
+                      sx={{ fontSize: "10px" }}
+                    ></CircularProgress>
+                  </ButtonSignIn>
+                ) : (
+                  <ButtonSignIn onClick={sLogin}>Đăng nhập</ButtonSignIn>
+                )}
               </Box>
               <Box mt={2} display={"grid"} justifyContent={"center"}>
                 <Typography

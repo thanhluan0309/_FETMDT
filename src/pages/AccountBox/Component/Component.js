@@ -51,6 +51,13 @@ export const AppContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+export const AppContainerSign = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const FormBase = ({ children }) => {
   return (
     <>
@@ -58,7 +65,7 @@ export const FormBase = ({ children }) => {
         sx={{
           width: "480px",
           maxWidth: "1320px",
-          height: "110%",
+          height: "100%",
           backgroundColor: "white",
           display: "flex",
           flexDirection: "column",
@@ -95,7 +102,7 @@ export const FooterBase = ({ children }) => {
         </Typography>
         <ButtonSignUP
           onClick={() => {
-            nav("/sign-up");
+            nav("/registry");
           }}
         >
           Đăng Ký Ngay

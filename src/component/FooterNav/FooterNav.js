@@ -25,6 +25,7 @@ const FooterNav = () => {
       position={"fixed"}
       boxShadow={"24"}
       bottom={"0"}
+      className="PaddingLRForForFooterNav"
     >
       <ul
         style={{

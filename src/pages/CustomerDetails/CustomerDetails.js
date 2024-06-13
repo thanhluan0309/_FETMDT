@@ -27,11 +27,12 @@ import { useQuery } from "@tanstack/react-query";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./style.css";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const CustomerDetails = () => {
   const [errors, seterrors] = useState({});
   const [formEditStart, setFormEditStart] = useState({});
   const [formEdit, setFormEdit] = useState({});
+  const [isloading, setIsloading] = useState(false);
   const { customerid } = useParams();
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -96,6 +97,7 @@ const CustomerDetails = () => {
   };
   const handleUpdate = () => {
     if (validate()) {
+      setIsloading(true);
       let differentProperties = getDifferentProperties(formEdit, formEditStart);
       differentProperties = {
         ...differentProperties,
@@ -111,9 +113,11 @@ const CustomerDetails = () => {
             alert("Cập nhật thành công");
             get_Customer.refetch();
           }
+          setIsloading(false);
         },
         onError: (err) => {
-          console.log("erro rồi");
+          console.log("error rồi");
+          setIsloading(false);
         },
       });
     }
@@ -152,118 +156,142 @@ const CustomerDetails = () => {
 
   return (
     <>
-      <Box minHeight={"100vh"}>
-        <Box
-          display={"flex"}
-          width={"100%"}
-          alignItems={"center"}
-          height={"80px"}
-          p={1}
-          borderBottom={"solid 10px #eeedee"}
-        >
-          <ArrowBackIcon
-            color="primary"
-            sx={{ cursor: "pointer" }}
-            onClick={() => {
-              nav("/customer");
-            }}
-          ></ArrowBackIcon>
-          <Typography ml={1} fontWeight={700}>
-            Thông tin khách hàng
-          </Typography>{" "}
-        </Box>
-        <Box style={{ backgroundColor: "white" }}>
-          <Box
-            display={"flex"}
-            padding={"12px 12px 0px 12px"}
-            justifyContent={"space-between"}
-            width={"100%"}
-          >
-            <form className="formCss" style={{ width: "100%" }}>
-              <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Họ và Tên</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="name"
-                  onChange={onChange}
-                  value={formEdit?.name || ""}
-                  placeholder="Nhập họ và tên của bạn"
-                />
-                <Typography fontSize={".8rem"} color={"red"}>
-                  {errors.name}
-                </Typography>
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleFormControlInput2">Số điện thoại</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="exampleFormControlInput2"
-                  name="phone"
-                  onChange={onChange}
-                  value={formEdit?.phone || ""}
-                  placeholder="Nhập số điện thoại của bạn"
-                />
-                <Typography fontSize={".8rem"} color={"red"}>
-                  {errors.phone}
-                </Typography>
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea1">Địa chỉ</label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  name="address"
-                  onChange={onChange}
-                  value={formEdit?.address || ""}
-                  placeholder="Nhập địa chỉ của bạn"
-                ></textarea>
-                <Typography fontSize={".8rem"} color={"red"}>
-                  {errors.address}
-                </Typography>
-              </div>
-            </form>
-          </Box>
-
-          <Box
-            display={"flex"}
-            borderBottom={"solid 5px #eeedee"}
-            mt={3}
-            p={"12px"}
-          >
-            <ShoppingCartCheckoutIcon
-              color={"#5C6366"}
-            ></ShoppingCartCheckoutIcon>
-            <Typography
-              variant="subtitle2"
-              ml={1}
-              fontWeight={600}
-              fontSize={"1rem"}
-              color={"#5C6366"}
+      <Box className="PaddingLRForCustomerDetails" minHeight={"100vh"}>
+        {get_Customer.isLoading ? (
+          <h5>Đang tải dử liệu....</h5>
+        ) : (
+          <>
+            {" "}
+            <Box
+              display={"flex"}
+              width={"100%"}
+              alignItems={"center"}
+              height={"80px"}
+              p={1}
+              borderBottom={"solid 10px #eeedee"}
             >
-              Chưa phát sinh đơn nào
-            </Typography>
-          </Box>
-        </Box>
-        <Box display={"flex"} height={"150px"}>
-          <Stack
-            margin={"auto"}
-            justifyContent={"space-evenly"}
-            width={"100%"}
-            spacing={2}
-            direction="row"
-          >
-            <Button variant="outlined" onClick={handleUpdate} color="warning">
-              Xác nhận điều chỉnh
-            </Button>
-            <Button variant="outlined" onClick={handleDelete} color="error">
-              Xoá
-            </Button>
-          </Stack>
-        </Box>
+              <ArrowBackIcon
+                color="primary"
+                sx={{ cursor: "pointer" }}
+                onClick={() => {
+                  nav("/customer");
+                }}
+              ></ArrowBackIcon>
+              <Typography ml={1} fontWeight={700}>
+                Thông tin khách hàng
+              </Typography>{" "}
+            </Box>
+            <Box style={{ backgroundColor: "white" }}>
+              <Box
+                display={"flex"}
+                padding={"12px 12px 0px 12px"}
+                justifyContent={"space-between"}
+                width={"100%"}
+              >
+                <form className="formCss" style={{ width: "100%" }}>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Họ và Tên</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      name="name"
+                      onChange={onChange}
+                      value={formEdit?.name || ""}
+                      placeholder="Nhập họ và tên của bạn"
+                    />
+                    <Typography fontSize={".8rem"} color={"red"}>
+                      {errors.name}
+                    </Typography>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput2">
+                      Số điện thoại
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="exampleFormControlInput2"
+                      name="phone"
+                      onChange={onChange}
+                      value={formEdit?.phone || ""}
+                      placeholder="Nhập số điện thoại của bạn"
+                    />
+                    <Typography fontSize={".8rem"} color={"red"}>
+                      {errors.phone}
+                    </Typography>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">Địa chỉ</label>
+                    <textarea
+                      className="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      name="address"
+                      onChange={onChange}
+                      value={formEdit?.address || ""}
+                      placeholder="Nhập địa chỉ của bạn"
+                    ></textarea>
+                    <Typography fontSize={".8rem"} color={"red"}>
+                      {errors.address}
+                    </Typography>
+                  </div>
+                </form>
+              </Box>
+
+              <Box
+                display={"flex"}
+                borderBottom={"solid 5px #eeedee"}
+                mt={3}
+                p={"12px"}
+              >
+                <ShoppingCartCheckoutIcon
+                  color={"#5C6366"}
+                ></ShoppingCartCheckoutIcon>
+                <Typography
+                  variant="subtitle2"
+                  ml={1}
+                  fontWeight={600}
+                  fontSize={"1rem"}
+                  color={"#5C6366"}
+                >
+                  Chưa phát sinh đơn nào
+                </Typography>
+              </Box>
+            </Box>
+            <Box display={"flex"} height={"100px"}>
+              <Stack
+                margin={"auto"}
+                justifyContent={"space-evenly"}
+                width={"100%"}
+                spacing={2}
+                direction="row"
+              >
+                {isloading ? (
+                  <Button
+                    variant="outlined"
+                    sx={{ display: "flex" }}
+                    color="warning"
+                  >
+                    <CircularProgress />
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    onClick={handleUpdate}
+                    color="warning"
+                  >
+                    Xác nhận điều chỉnh
+                  </Button>
+                )}
+
+                <Button variant="outlined" onClick={handleDelete} color="error">
+                  Xoá
+                </Button>
+              </Stack>
+            </Box>
+          </>
+        )}
       </Box>
     </>
   );

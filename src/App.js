@@ -16,12 +16,14 @@ import Base from "./component/Base/Base";
 import Cart from "./pages/Cart/Cart";
 import Order from "./pages/Order/Order";
 import CustomerDetails from "./pages/CustomerDetails/CustomerDetails";
+import Registry from "./pages/AccountBox/registry";
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Auth></Auth>}></Route>
       <Route path="/login" element={<Auth check="login"></Auth>}></Route>
       <Route path="/sign-up" element={<SignupForm></SignupForm>}></Route>
+      <Route path="/registry/" element={<Registry></Registry>}></Route>
       <Route
         path="/cart"
         element={
