@@ -24,7 +24,7 @@ function App() {
         path="/cart"
         element={
           <Base>
-            <Order></Order>
+            <Cart></Cart>
           </Base>
         }
       ></Route>
@@ -32,7 +32,7 @@ function App() {
         path="/order"
         element={
           <Base>
-            <Cart></Cart>
+            <Order></Order>
           </Base>
         }
       ></Route>
