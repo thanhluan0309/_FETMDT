@@ -1,143 +1,248 @@
-import React, { useContext } from "react";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 import {
-  BoldLink,
-  BoxContainer,
-  FormContainer,
-  Input,
-  LineText,
-  MutedLink,
-  SubmitButton,
-} from "./common";
-import { Marginer } from "../marginer";
-import { AccountContext } from "./accountContext";
-import { Typography } from "@mui/material";
-import { Label } from "@mui/icons-material";
-import { HandleRegister } from "../../services/handleAccount/handleAccount";
+  FormBase,
+  FooterBase,
+  AppContainer,
+  HeaderAuth,
+  ButtonSignIn,
+  ErrorMessage,
+} from "./Component/Component";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
-export function SignupForm(props) {
-  const { switchToSignin } = useContext(AccountContext);
-  const [validationError, setValidationError] = useState({});
-  const [FormRegister, SetformRegister] = useState({
+
+import { HandleRegister } from "../../services/handleAccount/handleAccount";
+import { useNavigate } from "react-router-dom";
+const SignupForm = (props) => {
+  let nav = useNavigate();
+  const [errorRequired, setErrorRequired] = useState("");
+  const [stateError, setStateError] = useState({});
+  const [FormRegister, setFormRegister] = useState({
     name: "",
     phone: "",
     email: "",
-    date_of_birth: "",
-    address: "",
+    date_of_birth: "2024-05-07T08:06:45.082Z",
+    address: "...",
     password: "",
     confirm_password: "",
   });
+  const initStateRegister = () => {
+    setFormRegister({
+      name: "",
+      phone: "",
+      email: "",
+      date_of_birth: "2024-05-07T08:06:45.082Z",
+      address: "...",
+      password: "",
+      confirm_password: "",
+    });
+  };
 
-  const onchangeForm = (e) => {
-    setValidationError({});
-    SetformRegister({
+  const onChange = (e) => {
+    setErrorRequired("");
+    setStateError({});
+    setFormRegister({
       ...FormRegister,
       [e.target.name]: e.target.value,
     });
   };
-  const { mutate, error } = useMutation({
+  const useMutation_Register = useMutation({
     mutationFn: (body) => {
       return HandleRegister(body);
     },
   });
+  const validate = () => {
+    const newErrors = {};
 
-  const handlesingup = () => {
-    mutate(FormRegister, {
-      onSuccess: (data) => {
-        console.log("check data " + JSON.stringify(data, null, 2));
-        setValidationError(data);
-      },
-      onError: (error) => {
-        console.log(">>> error " + error);
-      },
-    });
+    if (!FormRegister.name) {
+      newErrors.name = "Vui lòng không bỏ trống họ và tên !!";
+    }
+
+    if (!FormRegister.email) {
+      newErrors.email = "Vui lòng không bỏ trống email !!";
+    }
+    if (!FormRegister.phone) {
+      newErrors.phone = "Vui lòng không bỏ trống số điện thoại !!";
+    }
+    if (!FormRegister.password) {
+      newErrors.password = "Vui lòng không bỏ trống !";
+    }
+
+    if (!FormRegister.confirm_password) {
+      newErrors.confirm_password = "Vui lòng không bỏ trống !";
+    }
+    setErrorRequired(newErrors);
+
+    return Object.keys(newErrors).length === 0;
   };
-  console.log(">>error " + error);
+  const sRegister = () => {
+    if (validate()) {
+      useMutation_Register.mutate(FormRegister, {
+        onSuccess: (data) => {
+          if (data?.errors) {
+            setStateError(data?.errors);
+          } else {
+            alert("Đăng ký tài khoản thành công");
+            initStateRegister();
+            nav("/login");
+          }
+        },
+      });
+    }
+  };
   return (
-    <BoxContainer>
-      <FormContainer>
-        <Typography variant="inherit" fontSize={12} fontWeight="300" mb={3}>
-          <Label htmlColor="#34a853"></Label> Vui lòng để lại thông tin đăng ký
-          để XXX có thể liên hệ và hướng dẫn với bạn.
-        </Typography>
-        <Input
-          id="fullname"
-          name="name"
-          type="text"
-          value={FormRegister.name}
-          onChange={onchangeForm}
-          placeholder="Nhập họ và tên"
-        />
-        <Input
-          id="phone"
-          name="phone"
-          type="text"
-          value={FormRegister.phone}
-          onChange={onchangeForm}
-          placeholder="Nhập số điện thoại"
-        />
+    <>
+      <AppContainer>
+        <FormBase>
+          <Box sx={{ height: "91vh" }}>
+            <HeaderAuth></HeaderAuth>
+            <Box
+              mt={2}
+              sx={{
+                paddingLeft: "2rem",
+                paddingRight: "2rem",
+                maxHeight: "77vh",
+                overflowY: "scroll",
+              }}
+            >
+              <Typography
+                fontSize={"26px"}
+                fontWeight={700}
+                variant="subtitle1"
+              >
+                Trở thành đối tác kinh doanh Với Tikpii
+              </Typography>
 
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          value={FormRegister.email}
-          onChange={onchangeForm}
-          placeholder="Địa chỉ email"
-        />
-        <Input
-          id="address"
-          name="address"
-          type="text"
-          value={FormRegister.address}
-          onChange={onchangeForm}
-          placeholder="Địa chỉ"
-        />
-        <Input
-          id="date_of_birth"
-          name="date_of_birth"
-          type="date"
-          placeholder="YYYY-MM-DD"
-          value={FormRegister.date_of_birth}
-          onChange={onchangeForm}
-        />
-        <Input
-          id="password"
-          name="password"
-          type="text"
-          placeholder="Nhập mật khẩu"
-          value={FormRegister.password}
-          onChange={onchangeForm}
-        />
-        <Input
-          id="repassword"
-          type="password"
-          name="confirm_password"
-          value={FormRegister.confirm_password}
-          onChange={onchangeForm}
-          placeholder="Nhập xác nhận mật khẩu"
-        />
-      </FormContainer>
-      <Marginer direction="vertical" margin={10} />
-      <SubmitButton onClick={handlesingup}>Sign Up</SubmitButton>
-      <Stack sx={{ width: "100%" }} spacing={2}>
-        {validationError?.errors &&
-          Object.entries(validationError?.errors).map(([key, error], index) => (
-            <Alert key={index} severity="error">
-              {" "}
-              {error?.msg}
-            </Alert>
-          ))}
-      </Stack>
-      <Marginer direction="vertical" margin="5px" />
-      <LineText>
-        Already have an account?{" "}
-        <BoldLink onClick={switchToSignin} href="#">
-          Sign In
-        </BoldLink>
-      </LineText>
-    </BoxContainer>
+              <Typography fontSize={"16px"} variant="subtitle2">
+                Vui lòng để lại thông tin đăng ký để Droppii có thể liên hệ và
+                hướng dẫn với bạn.
+              </Typography>
+
+              <form style={{ marginTop: "1rem" }}>
+                <Box className="form-group">
+                  <label htmlFor="name" className="form-label">
+                    Họ và Tên
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={FormRegister.name}
+                    onChange={onChange}
+                    style={{ height: "48px", fontSize: ".9rem" }}
+                    className="form-control"
+                    placeholder="Họ và Tên"
+                  />
+                  {errorRequired.name && (
+                    <ErrorMessage>* {errorRequired.name}</ErrorMessage>
+                  )}
+                </Box>
+                <Box style={{ marginTop: "1rem" }} className="form-group">
+                  <label htmlFor="phone" className="form-label">
+                    Số điện thoại
+                  </label>
+                  <input
+                    type="number"
+                    id="phone"
+                    name="phone"
+                    value={FormRegister.phone}
+                    onChange={onChange}
+                    style={{ height: "48px", fontSize: ".9rem" }}
+                    className="form-control"
+                    placeholder="Số điện thoại"
+                  />
+                  {errorRequired.phone && (
+                    <ErrorMessage>* {errorRequired.phone}</ErrorMessage>
+                  )}
+                  {stateError?.phone && (
+                    <ErrorMessage>* {stateError?.phone?.msg}</ErrorMessage>
+                  )}
+                </Box>
+                <Box style={{ marginTop: "1rem" }} className="form-group">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={FormRegister.email}
+                    onChange={onChange}
+                    style={{ height: "48px", fontSize: ".9rem" }}
+                    className="form-control"
+                    placeholder="Địa chỉ Email"
+                  />
+                  {errorRequired.email && (
+                    <ErrorMessage>* {errorRequired.email}</ErrorMessage>
+                  )}
+                  {stateError?.email && (
+                    <ErrorMessage>* {stateError?.email?.msg}</ErrorMessage>
+                  )}
+                </Box>
+                <Box style={{ marginTop: "1rem" }} className="form-group">
+                  <label htmlFor="password" className="form-label">
+                    Mật khẩu
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={FormRegister.password}
+                    onChange={onChange}
+                    style={{ height: "48px", fontSize: ".9rem" }}
+                    className="form-control"
+                    placeholder="Mật khẩu"
+                  />
+                  {errorRequired.password && (
+                    <ErrorMessage>* {errorRequired.password}</ErrorMessage>
+                  )}
+                  {stateError?.password && (
+                    <ErrorMessage>* {stateError?.password?.msg}</ErrorMessage>
+                  )}
+                </Box>
+                <Box style={{ marginTop: "1rem" }} className="form-group">
+                  <label htmlFor="password" className="form-label">
+                    Xác nhận lại mật khẩu
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="confirm_password"
+                    value={FormRegister.confirm_password}
+                    onChange={onChange}
+                    style={{ height: "48px", fontSize: ".9rem" }}
+                    className="form-control"
+                    placeholder="Xác nhận lại mật khẩu"
+                  />
+                  {errorRequired.confirm_password && (
+                    <ErrorMessage>
+                      {" "}
+                      *{errorRequired.confirm_password}
+                    </ErrorMessage>
+                  )}
+                  {stateError?.confirm_password && (
+                    <ErrorMessage>
+                      * {stateError?.confirm_password?.msg}
+                    </ErrorMessage>
+                  )}
+                </Box>
+              </form>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              paddingLeft: "2rem",
+              paddingTop: "1rem",
+              paddingBottom: "2rem",
+              paddingRight: "2rem",
+              textAlign: "center",
+              backgroundColor: "#f7f7fa",
+            }}
+          >
+            <ButtonSignIn onClick={sRegister}>Đăng Ký</ButtonSignIn>
+          </Box>
+        </FormBase>
+      </AppContainer>
+    </>
   );
-}
+};
+export default SignupForm;

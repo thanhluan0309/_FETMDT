@@ -1,274 +1,418 @@
 import BarChart from "./Barchart";
-import { Box } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import CallIcon from "@mui/icons-material/Call";
-import { InputNumber } from "primereact/inputnumber";
-import Button from "@mui/material/Button";
 
+import { styled } from "@mui/material/styles";
+
+import { useParams } from "react-router-dom";
+import { Create_Customer } from "../../services/handleCustomer/handleCustomer";
+import { useMutation } from "@tanstack/react-query";
+import LinkIcon from "@mui/icons-material/Link";
 import { useState } from "react";
-import styled from "styled-components";
+import CallIcon from "@mui/icons-material/Call";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Modal from "@mui/material/Modal";
+import {
+  GET_ALL_CUSTOMER_BY_ID,
+  GET_ALL_CUSTOMER,
+} from "../../services/handleCustomer/handleCustomer";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+
+  boxShadow: 2,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
 const Customer = () => {
-  const [open, setOpen] = React.useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [file, setFile] = useState(null);
-  const [phone, setPhone] = useState("");
-  const FormContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `;
-
-  const FormWrapper = styled.form`
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
-  `;
-
-  const FormGroup = styled.div`
-    margin-bottom: 20px;
-  `;
-
-  const FormLabel = styled.label`
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
-    display: block;
-    margin-bottom: 5px;
-  `;
-
-  const FormInput = styled.input`
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease-in-out;
-
-    &:focus {
-      outline: none;
-      border-color: #4d90fe;
-    }
-    @media (max-width: 768px) {
-      font-size: 14px;
-      padding: 8px;
-    }
-  `;
-
-  const FileInput = styled(FormInput).attrs({ type: "file" })`
-    padding: 5px;
-  `;
-
-  const SubmitButton = styled.button`
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #4d90fe;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-      background-color: #307fe2;
-    }
-    @media (max-width: 768px) {
-      font-size: 14px;
-      padding: 8px;
-    }
-  `;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Xử lý dữ liệu form ở đây
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("File:", file);
-    console.log("Phone:", phone);
+  const [open, setOpen] = useState(false);
+  const [tinh, setTinh] = useState([]);
+  const [quan, setQuan] = useState([]);
+  const [phuong, setPhuong] = useState([]);
+  const [selectedTinh, setSelectedTinh] = useState("");
+  const [selectedQuan, setSelectedQuan] = useState("");
+  const [selectedPhuong, setSelectedPhuong] = useState("");
+  const [errors, seterrors] = useState({});
+  const [formCreateCustomer, setFromCreateCustomer] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
+  let nav = useNavigate();
+  const Initall = () => {
+    setFromCreateCustomer({
+      name: "",
+      phone: "",
+      address: "",
+    });
+    setTinh([]);
+    setQuan([]);
+    setPhuong([]);
+    setSelectedTinh("");
+    setSelectedQuan("");
+    setSelectedPhuong("");
+    seterrors({});
   };
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const style = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
+  const useMutation_CreateCustomer = useMutation({
+    mutationFn: (body) => {
+      return Create_Customer(body);
+    },
+  });
+  const getAll_Customer = useQuery({
+    queryKey: ["get_all_customer"],
+    queryFn: async () => {
+      const result = await GET_ALL_CUSTOMER();
+      return result; // Ensure the result is returned
+    },
+  });
+  const onChange = (e) => {
+    console.log("on change ?");
+    seterrors({});
+    setFromCreateCustomer({
+      ...formCreateCustomer,
+      [e.target.name]: e.target.value,
+    });
+  };
+  React.useEffect(() => {
+    // Lấy danh sách tỉnh thành
+    fetch("https://esgoo.net/api-tinhthanh/1/0.htm")
+      .then((response) => response.json())
+      .then((data_tinh) => {
+        if (data_tinh.error === 0) {
+          setTinh(data_tinh.data);
+        }
+      });
+  }, []);
+
+  React.useEffect(() => {
+    if (selectedTinh) {
+      // Lấy danh sách quận huyện
+      fetch(`https://esgoo.net/api-tinhthanh/2/${selectedTinh}.htm`)
+        .then((response) => response.json())
+        .then((data_quan) => {
+          if (data_quan.error === 0) {
+            setQuan(data_quan.data);
+            setPhuong([]); // Reset phường/xã khi thay đổi quận/huyện
+          }
+        });
+    }
+  }, [selectedTinh]);
+
+  React.useEffect(() => {
+    if (selectedQuan) {
+      // Lấy danh sách phường xã
+      fetch(`https://esgoo.net/api-tinhthanh/3/${selectedQuan}.htm`)
+        .then((response) => response.json())
+        .then((data_phuong) => {
+          if (data_phuong.error === 0) {
+            setPhuong(data_phuong.data);
+          }
+        });
+    }
+  }, [selectedQuan]);
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formCreateCustomer.name) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!formCreateCustomer.phone) {
+      newErrors.phone = "phone is required";
+    }
+
+    seterrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleCreateCustomer = () => {
+    if (validate()) {
+      let objectTinh = tinh.filter((item, index) => {
+        return item.id === selectedTinh;
+      });
+      let objectQuan = quan.filter((item, index) => {
+        return item.id === selectedQuan;
+      });
+      let objectPhuong = phuong.filter((item, index) => {
+        return item.id === selectedPhuong;
+      });
+
+      let FormCreate = {
+        name: formCreateCustomer.name,
+        address:
+          objectTinh[0]?.full_name +
+          ", " +
+          objectQuan[0]?.full_name +
+          ", " +
+          objectPhuong[0]?.full_name +
+          ", " +
+          formCreateCustomer.address,
+        phone: formCreateCustomer.phone,
+      };
+      useMutation_CreateCustomer.mutate(FormCreate, {
+        onSuccess: (data) => {
+          console.log("data " + JSON.stringify(data));
+          if (data?.errors) {
+            const newErrors = {};
+            newErrors.phone = data?.errors?.phone?.msg;
+            console.log(" newErrors.phone " + newErrors.phone);
+
+            console.log("newErrors " + JSON.stringify(newErrors));
+            seterrors(newErrors);
+          } else {
+            alert("Khởi tạo khách hàng thành công");
+            Initall();
+            setOpen(false);
+            getAll_Customer.refetch();
+          }
+        },
+      });
+      return;
+    }
   };
   return (
     <>
-      <div style={{ backgroundColor: "white" }} className="container">
-        <Box>
+      <Box className="PaddingLRForCustomer" minHeight={"100vh"}>
+        {getAll_Customer.isLoading ? (
+          <Typography>Đang tải dử liệu....</Typography>
+        ) : (
+          getAll_Customer.data?.data?.data.map((item, index) => (
+            <Box style={{ backgroundColor: "white" }}>
+              {/* <Box>
           <BarChart></BarChart>
-        </Box>
+        </Box> */}
 
+              <Box
+                display={"flex"}
+                padding={"12px 12px 0px 12px"}
+                justifyContent={"space-between"}
+                width={"100%"}
+                borderBottom={"solid 1px gainsboro"}
+                sx={{ cursor: "pointer" }}
+                onClick={() => {
+                  nav(`/cDetails/${item._id}`);
+                }}
+              >
+                <ul style={{ padding: "0px", width: "80%" }}>
+                  <li>
+                    <Typography
+                      fontWeight={700}
+                      color={"#607CFB"}
+                      fontSize={".7rem"}
+                    >
+                      <LinkIcon color={"#607CFB"} fontSize="small">
+                        {" "}
+                      </LinkIcon>{" "}
+                      CHƯA LIÊN KẾT
+                    </Typography>
+                  </li>
+                  <li style={{ paddingBottom: "2%" }}>
+                    <Typography variant="subtitle1" fontWeight={700}>
+                      {item.name}
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography> {item.phone}</Typography>
+                  </li>
+                  <li>
+                    <Typography color={"#607CFB"}> {item.address}</Typography>
+                  </li>
+                </ul>
+                <Box
+                  display={"flex"}
+                  justifyContent={"space-around"}
+                  alignItems={"center"}
+                >
+                  <Button>
+                    <CallIcon fontSize="small"></CallIcon>
+                  </Button>
+
+                  <Button>
+                    <ShoppingCartIcon fontSize="small"></ShoppingCartIcon>
+                  </Button>
+                </Box>
+              </Box>
+
+              <Box borderBottom={"solid 5px #eeedee"} p={"12px"}>
+                <Typography fontSize={".7rem"}>
+                  Chưa phát sinh đơn nào
+                </Typography>
+              </Box>
+            </Box>
+          ))
+        )}
+
+        <Box></Box>
         <Box
-          gridTemplateColumns="repeat(12, 1fr)"
-          gridAutoRows="140px"
-          flexWrap="wrap"
-          display="flex"
-          justifyContent="space-evenly"
-          mt={15}
-          gap="20px"
+          // bgcolor={"white"}
+          position={"fixed"}
+          bottom={"50px"}
+          left={"0%"}
+          height={"100px"}
+          width={"100%"}
+          display={"flex"}
         >
           <Box
-            gridColumn="span 5"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-            gridRow="span 2"
-            style={{ overflowY: "scroll", height: "580px" }}
+            width={"48px"}
+            height={"48px"}
+            bgcolor={"blue"}
+            borderRadius={"100%"}
+            display={"flex"}
+            textAlign={"center"}
+            justifyContent={"center"}
+            margin={"auto"}
+            boxShadow={5}
+            sx={{ cursor: "pointer" }}
+            onClick={handleOpen}
           >
-            <Typography p="15px" variant="inherit" fontWeight="600">
-              Danh sách khách hàng
+            <Typography fontSize={"2rem"} alignSelf={"center"} color={"white"}>
+              +
             </Typography>
-            <List
-              sx={{
-                width: "100%",
-                maxWidth: 460,
-                height: 500,
-
-                bgcolor: "background.paper",
-              }}
-            >
-              {[...Array(5)].map((_, index) => (
-                <>
-                  <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzyxA6n0DfRfkMJlPW_wxmeXvb9CwnkDOa4gxpWyvjZA&s"
-                      />
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary="Brunch this weekend?"
-                      secondary={
-                        <React.Fragment>
-                          <Typography
-                            sx={{ display: "inline" }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                          >
-                            Ali Connors
-                          </Typography>
-                          {
-                            " — I'll be in your neighborhood doing errands this…"
-                          }
-                        </React.Fragment>
-                      }
-                    />
-                    <Box
-                      width={"200px"}
-                      justifyContent={"space-between"}
-                      display={"flex"}
-                    >
-                      <Box p={1}>
-                        <Button variant="outlined">
-                          <ShoppingBasketIcon></ShoppingBasketIcon>
-                        </Button>
-                      </Box>
-                      <Box p={1}>
-                        <Button variant="outlined">
-                          <CallIcon></CallIcon>
-                        </Button>
-                      </Box>
-                    </Box>
-                  </ListItem>
-
-                  <Divider variant="inset" component="li" />
-                </>
-              ))}
-            </List>
-          </Box>
-          <Box
-            gridColumn="span 5"
-            data-aos-duration="2000"
-            data-aos="slide-left"
-            gridRow="span 2"
-          >
-            <Typography p="15px" variant="inherit" fontWeight="600">
-              Tạo khách hàng
-            </Typography>
-            <Box>
-              <FormContainer>
-                <FormWrapper onSubmit={handleSubmit}>
-                  <FormGroup>
-                    <FormLabel htmlFor="email">Email:</FormLabel>
-                    <FormInput type="email" id="username" required />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormLabel htmlFor="username">Họ và tên:</FormLabel>
-                    <FormInput
-                      type="text"
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormLabel htmlFor="password">Địa chỉ:</FormLabel>
-                    <FormInput
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormLabel htmlFor="file">Hình ảnh:</FormLabel>
-                    <FileInput
-                      id="file"
-                      onChange={(e) => setFile(e.target.files[0])}
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormLabel htmlFor="phone">Số điện thoại:</FormLabel>
-                    <FormInput
-                      type="tel"
-                      id="phone"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      required
-                    />
-                  </FormGroup>
-                  <SubmitButton type="submit">TẠO</SubmitButton>
-                </FormWrapper>
-              </FormContainer>
-            </Box>
           </Box>
         </Box>
-      </div>{" "}
-      <div
-        className="container"
-        style={{
-          backgroundColor: "white",
-          padding: "0px",
-          paddingTop: "100px",
-        }}
-      ></div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: 400 }}>
+            <Box>
+              <Typography mb={3} variant="h5" fontWeight={700}>
+                Điền thông tin khách hàng
+              </Typography>
+              <div class="form-group">
+                <TextField
+                  fullWidth
+                  error={errors.phone ? true : false}
+                  sx={{ marginBottom: "2rem" }}
+                  id="standard-basic"
+                  name="phone"
+                  value={formCreateCustomer.phone}
+                  onChange={onChange}
+                  type="number"
+                  label="Số điện thoại khách hàng"
+                  variant="standard"
+                  helperText={errors.phone}
+                />
+                <TextField
+                  fullWidth
+                  error={errors.name ? true : false}
+                  sx={{ marginBottom: "2rem" }}
+                  id="standard-basic"
+                  name="name"
+                  value={formCreateCustomer.name}
+                  onChange={onChange}
+                  label="Họ tên khách hàng"
+                  variant="standard"
+                  helperText={errors.name}
+                />
+                <FormControl fullWidth sx={{ marginBottom: "2rem" }}>
+                  <InputLabel id="lableTinh">Tĩnh</InputLabel>
+                  <Select
+                    labelId="lableTinh"
+                    label="Tỉnh"
+                    id="tinh"
+                    name="tinh"
+                    value={selectedTinh}
+                    onChange={(e) => setSelectedTinh(e.target.value)}
+                  >
+                    {tinh.map((item) => (
+                      <MenuItem key={item.id} value={item.id}>
+                        {" "}
+                        {item.full_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl fullWidth sx={{ marginBottom: "2rem" }}>
+                  <InputLabel id="lableQuan">Quận</InputLabel>
+                  <Select
+                    labelId="lableQuan"
+                    label="Quận"
+                    id="quan"
+                    name="quan"
+                    value={selectedQuan}
+                    disabled={!selectedTinh}
+                    onChange={(e) => setSelectedQuan(e.target.value)}
+                  >
+                    {quan.map((item) => (
+                      <MenuItem key={item.id} value={item.id}>
+                        {" "}
+                        {item.full_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl fullWidth sx={{ marginBottom: "2rem" }}>
+                  <InputLabel id="lablePhuong">Phường</InputLabel>
+                  <Select
+                    labelId="lablePhuong"
+                    label="Phường"
+                    id="phuong"
+                    name="phuong"
+                    title="Chọn Phường Xã"
+                    value={selectedPhuong}
+                    disabled={!selectedQuan}
+                    onChange={(e) => setSelectedPhuong(e.target.value)}
+                  >
+                    {phuong.map((item) => (
+                      <MenuItem key={item.id} value={item.id}>
+                        {" "}
+                        {item.full_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <TextField
+                  fullWidth
+                  sx={{ marginBottom: "2rem" }}
+                  id="standard-basic"
+                  name="address"
+                  label="Số nhà tên đường"
+                  variant="standard"
+                  onChange={onChange}
+                />
+              </div>
+              <Box width={"100%"}>
+                <button
+                  style={{ width: "100%" }}
+                  class="btn btn-primary"
+                  onClick={handleCreateCustomer}
+                >
+                  Khởi tạo
+                </button>
+              </Box>
+            </Box>
+          </Box>
+        </Modal>
+      </Box>
     </>
   );
 };

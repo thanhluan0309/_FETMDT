@@ -11,7 +11,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 0) {
+      if (window.pageYOffset > 0 || window.pageYOffset <= 0) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -35,9 +35,9 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
     <header className={`sticky-header ${isScrolled ? "scrolled" : ""}`}>
       <nav style={{ paddingLeft: "5%", paddingRight: "5%" }}>
         <section className="left">
-          <div className="imgs">
-            <img
-              className="hide-in-desktop"
+          {/* <div className="imgs"> */}
+          {/* <img
+              // className="hide-in-desktop"
               src={menu}
               alt="icon-menu"
               onClick={() => {
@@ -57,7 +57,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
               }}
             />
           </div>
-          <div className="links hide-in-mobile">
+          {/* <div className="links hide-in-mobile">
             <ul>
               <li>
                 <button
@@ -96,7 +96,7 @@ const Navbar = ({ onOrderedQuant, onReset }) => {
                 </button>
               </li>
             </ul>
-          </div>
+          </div> */}
         </section>
         <div className="right">
           <IconButton

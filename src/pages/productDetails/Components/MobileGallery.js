@@ -9,27 +9,27 @@ import NextIcon from "./Icons/NextIcon";
 import PreviousIcon from "./Icons/PreviousIcon";
 
 const MobileGallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
-  const initialImage = IMAGES[0];
+  const initialImage = IMAGES[0]?.path;
 
   const [currentMobileImage, setCurrentMobileImage] = useState(initialImage);
   const [mobileImageIndex, setMobileImageIndex] = useState(0);
 
   const handleIncrement = () => {
     if (mobileImageIndex === IMAGES.length - 1) {
-      setCurrentMobileImage(initialImage || IMAGES[0]);
+      setCurrentMobileImage(initialImage || IMAGES[0]?.path);
       setMobileImageIndex(0);
     } else {
-      setCurrentMobileImage(IMAGES[mobileImageIndex + 1]);
+      setCurrentMobileImage(IMAGES[mobileImageIndex + 1]?.path);
       setMobileImageIndex(mobileImageIndex + 1);
     }
   };
 
   const handleDecrement = () => {
     if (mobileImageIndex === 0) {
-      setCurrentMobileImage(IMAGES[IMAGES.length - 1]);
+      setCurrentMobileImage(IMAGES[IMAGES.length - 1]?.path);
       setMobileImageIndex(IMAGES.length - 1);
     } else {
-      setCurrentMobileImage(IMAGES[mobileImageIndex - 1]);
+      setCurrentMobileImage(IMAGES[mobileImageIndex - 1]?.path);
       setMobileImageIndex(mobileImageIndex - 1);
     }
   };

@@ -36,7 +36,8 @@ import "./App.css";
 import { TitleProduct as TitleComponent } from "../../component/Styles/Title";
 import { PriceText, Discount } from "../../component/Styles/PriceText";
 import DiscountIcon from "@mui/icons-material/Discount";
-const Product = () => {
+import Cookies from "js-cookie";
+const Product = ({ stateProduct = [], Isloading = false }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -208,7 +209,7 @@ const Product = () => {
   return (
     <>
       <Box
-        className="hide-in-desktop"
+        // className="hide-in-desktop"
         pb={5}
         sx={{ width: "100%", height: "100%" }}
       >
@@ -219,25 +220,27 @@ const Product = () => {
           ></img>
         </div>
         <Box
+          className="AddpadingLeftProduct"
           sx={{
             width: "100%",
             height: "100%",
             paddingLeft: "5px",
             paddingRight: "5px",
+            backgroundColor: "white",
           }}
         >
-          <div class="col-12 mb-2">
+          {/* <div style={{ marginTop: "2rem" }} class="col-12 mb-2">
             <Box display={"flex"} justifyContent={"space-between"}>
               <Typography variant="h7" fontWeight={700}>
                 Các nhãn hàng
               </Typography>
             </Box>
-          </div>
+          </div> */}
           <div
             style={{
               overflowY: "scroll",
               display: "flex",
-              height: "200px",
+              height: "100px",
               width: "100%",
               flexWrap: "wrap",
               justifyContent: "space-between",
@@ -256,7 +259,7 @@ const Product = () => {
               ))}
           </div>
 
-          <Box display={"flex"} p={3}>
+          <Box display={"flex"} p={1}>
             {/* <Typography
               fontStyle={"italic"}
               color={"blue"}
@@ -361,8 +364,8 @@ const Product = () => {
             </Typography>
             <Box sx={{ flexGrow: 1 }}>
               <Grid display={"flex"} justifyContent={"space-between"} container>
-                {data &&
-                  data.map((item, index) => (
+                {stateProduct &&
+                  stateProduct.map((item, index) => (
                     <Grid
                       mt={2}
                       sx={{ width: "49%" }}
@@ -383,8 +386,8 @@ const Product = () => {
                         <CardMedia
                           component="img"
                           alt="green iguana"
-                          height="140"
-                          image={item.image[0]}
+                          sx={{ height: "140px" }}
+                          image={item.images[0].path}
                           onClick={() => {
                             nav(`/pDetails/${item.id}`);
                           }}
@@ -401,7 +404,14 @@ const Product = () => {
                             sx={{ padding: "0px" }}
                             className="text-primary"
                           >
-                            Lợi nhuận: {item.Profit} đ
+                            Lợi nhuận:{" "}
+                            {(
+                              ((parseInt(item.price_for_customer) -
+                                parseInt(item.profit)) *
+                                parseInt(item.discount_for_seller)) /
+                              100
+                            ).toLocaleString("en-US")}
+                            đ
                           </Button>
                           <Box
                             display={"flex"}
@@ -409,7 +419,8 @@ const Product = () => {
                             justifyContent={"space-between"}
                           >
                             <PriceText style={{ fontSize: ".7rem" }}>
-                              {item.price.toLocaleString("en-US")} đ
+                              {item.price_for_customer.toLocaleString("en-US")}{" "}
+                              đ
                             </PriceText>
                             <Box display={"flex"}>
                               <Box
@@ -420,7 +431,7 @@ const Product = () => {
                               >
                                 <DiscountMB>
                                   {" "}
-                                  Giảm {item.discount}
+                                  Giảm {item.sales}
                                   <DiscountIcon fontSize="small"></DiscountIcon>
                                 </DiscountMB>
                               </Box>

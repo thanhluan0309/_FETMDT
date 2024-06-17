@@ -15,14 +15,16 @@ import thumb4 from "../Pictures/image-product-4-thumbnail.jpg";
 // const THUMBS = [prod1, prod2, prod3, prod4];
 
 const Gallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
-  const initialImage = IMAGES[0];
-  const initialThumbs = THUMBS[0];
+  const initialImage = IMAGES[0]?.path || "";
+  const initialThumbs = THUMBS[0]?.path || "";
   const [currentImage, setCurrentImage] = useState(initialImage);
   const [currentPassedImage, setCurrentPassedImage] = useState(initialThumbs);
 
   const [open, setOpen] = useState(false);
   const handleClick = (index) => {
-    setCurrentImage(IMAGES[index]);
+    console.log("index " + index);
+    console.log("IMAGES[index]?.path " + IMAGES[index]?.path);
+    setCurrentImage(IMAGES[index]?.path);
   };
   const handleToggle = () => {
     setOpen(true);
@@ -44,11 +46,7 @@ const Gallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
     <section className="gallery-holder hide-in-mobile">
       <section style={{ backgroundColor: "white" }} className="gallery">
         <div className="image">
-          <img
-            src={initialImage || currentImage}
-            alt="product-1"
-            onClick={handleToggle}
-          />
+          <img src={currentImage} alt="product-1" onClick={handleToggle} />
         </div>
         <BackdropGallery
           handleClose={handleClose}
@@ -69,7 +67,7 @@ const Gallery = ({ IMAGES = [], THUMBS = [], stateProduct }) => {
                   }}
                 >
                   <div className={`outlay ${index === 0 && "activated"}`}></div>
-                  <img src={th} alt={`product-${index + 1}`} />
+                  <img src={th.path} alt={`product-${index + 1}`} />
                 </div>
               );
             })}

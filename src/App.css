@@ -34,6 +34,17 @@
   .hide-in-mobile {
     display: none;
   }
+  .AddpadingLeft {
+    padding-left: 4.1rem !important;
+    padding-right: 1rem !important;
+  }
+  .AddpadingLeftProduct {
+    padding-left: 3.5rem !important;
+    padding-right: 3.5rem !important;
+  }
+  .AddMarginLeft2 {
+    margin-left: 2rem !important;
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -209,8 +220,7 @@
   transition: all 200ms ease-in-out;
   margin-bottom: 5px;
 }
-/* .sticky-header {
-  position: -webkit-sticky;
+.sticky-header {
   position: sticky;
   top: 0;
   background-color: white;
@@ -219,6 +229,6 @@
 }
 
 .sticky-header.scrolled {
-  background-color: #f5f5f5;
+  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-} */
+}

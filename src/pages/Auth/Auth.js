@@ -9,6 +9,7 @@ const Auth = ({ check }) => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     position: absolute;
     top: 50%;
     left: 50%;

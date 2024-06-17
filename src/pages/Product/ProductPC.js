@@ -35,7 +35,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { TitleProduct as TitleComponent } from "../../component/Styles/Title";
 import { PriceText, Discount } from "../../component/Styles/PriceText";
 import DiscountIcon from "@mui/icons-material/Discount";
-const Product = () => {
+const Product = ({ stateProduct = [], Isloading = false }) => {
   const [loading, setloading] = React.useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -214,13 +214,13 @@ const Product = () => {
         style={{ backgroundColor: "white", paddingBottom: "50px" }}
         className="container hide-in-mobile"
       >
-        <div className="col-12 ">
+        {/* <div className="col-12 ">
           <img
             className="bgtitle"
             src="https://img.pikbest.com/png-images/20211011/startup-managers-presenting-and-analyzing-sales-growth-chart_6143677.png!bw700"
           ></img>
-        </div>
-        <div class="  col-12">
+        </div> */}
+        <div style={{ marginTop: "2rem" }} class="  col-12">
           <Box display={"flex"} justifyContent={"space-between"}>
             <Typography variant="h5" fontWeight={600}>
               Các nhãn hàng
@@ -332,15 +332,15 @@ const Product = () => {
             <Grid
               mt="5px"
               display={"flex"}
-              justifyContent={"space-between"}
+              justifyContent={"flex-start"}
               container
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 9, md: 12 }}
             >
-              {data &&
-                data.map((item, index) => (
+              {stateProduct &&
+                stateProduct.map((item, index) => (
                   <>
-                    {loading ? (
+                    {Isloading ? (
                       <Box
                         sx={{
                           width: "300px",
@@ -378,10 +378,13 @@ const Product = () => {
                             <CardMedia
                               component="img"
                               alt="green iguana"
-                              height="140"
-                              image={item.image[0]}
+                              sx={{ height: "200px" }}
+                              image={item.images[0].path}
                               onClick={() => {
-                                nav(`/pDetails/${item.id}`);
+                                const id = item.id;
+                                nav(`/pDetails/${id}`, {
+                                  id: id,
+                                });
                               }}
                             />
                             <CardContent sx={{ padding: "8px" }}>
@@ -407,7 +410,10 @@ const Product = () => {
                                 justifyContent={"space-between"}
                               >
                                 <PriceText>
-                                  {item.price.toLocaleString("en-US")} đ
+                                  {item.price_for_customer.toLocaleString(
+                                    "en-US"
+                                  )}{" "}
+                                  đ
                                 </PriceText>
                                 <Box display={"flex"}>
                                   <Box

@@ -49,6 +49,26 @@ button {
   .hide-in-mobile {
     display: none;
   }
+  .PaddingLRForNav {
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+  }
+  .PaddingLRForCustomer {
+    padding-left: 4rem ;
+    padding-right: 3rem;
+  }
+  .PaddingLRForCustomerDetails {
+    padding-left: 3rem ;
+    padding-right: 3rem;
+  }
+  .PaddingLRForCustomerRegistry {
+    padding-left: 1rem ;
+    padding-right: 1rem;
+  }
+  .PaddingLRForForFooterNav {
+    padding-left: 4rem ;
+    padding-right: 4rem;
+  }
 }
 
 ul {

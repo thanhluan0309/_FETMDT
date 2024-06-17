@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className="AddpadingLeft">
         <div style={{ flexBasis: "20%" }} class="footer-column">
           <h2>TIKPII Q2</h2>
         </div>
